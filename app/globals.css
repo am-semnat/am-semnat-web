@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-paper: #faf9f4;
+  --color-paper-elevated: #ffffff;
+  --color-paper-muted: #f3f1e8;
+  --color-paper-deep: #e7e3d2;
+
+  --color-ink: #0e0e10;
+  --color-ink-muted: #4a4a4f;
+  --color-ink-faint: #8a8a91;
+
+  --color-rule: #e3dfd2;
+  --color-rule-strong: #cdc8b3;
+
+  --color-cobalt-50: #eff3ff;
+  --color-cobalt-100: #dbe4ff;
+  --color-cobalt-200: #bccaff;
+  --color-cobalt-500: #3f66ff;
+  --color-cobalt-600: #2b4ee0;
+  --color-cobalt-700: #1f3bb3;
+  --color-cobalt-deep: #0e1b5c;
+
+  --color-carbon: #0e0f12;
+  --color-carbon-elevated: #1a1b1f;
+
+  --font-display: var(--font-fraunces), "Iowan Old Style", "Apple Garamond", Georgia, serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    color-scheme: light;
   }
-}
+  a {
+    color: inherit;
+  }
+  ::selection {
+    background: var(--color-cobalt-500);
+    color: #fff;
+  }
+  body {
+    font-feature-settings: "ss01" on, "cv11" on;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .code-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  }
+  .code-scroll::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .code-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .code-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 3px;
+  }
+  .code-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }

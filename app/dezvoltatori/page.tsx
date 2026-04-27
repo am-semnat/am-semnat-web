@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -241,7 +242,14 @@ export default function DezvoltatoriPage() {
               >
                 @amsemnat/verifier-node
               </a>{" "}
-              îți permite să muți validarea pe server.
+              îți permite să muți validarea pe server, sau o folosești{" "}
+              <Link
+                href="/unelte/verificare-pdf"
+                className="text-ink hover:text-cobalt-600 underline decoration-dotted underline-offset-4 transition-colors"
+              >
+                direct în browser pe pagina noastră de verificare
+              </Link>
+              .
             </p>
           </div>
           <aside className="md:col-span-5">

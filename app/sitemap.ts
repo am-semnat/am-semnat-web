@@ -5,6 +5,7 @@ const ROUTES = [
   "",
   "/aplicatie",
   "/dezvoltatori",
+  "/unelte/verificare-pdf",
   "/comparatie/eidromania",
   "/preturi",
   "/cum-construim",

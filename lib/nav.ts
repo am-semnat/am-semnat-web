@@ -3,6 +3,7 @@ export type NavItem = { href: string; label: string };
 export const PRIMARY_NAV: NavItem[] = [
   { href: "/aplicatie", label: "Aplicație" },
   { href: "/dezvoltatori", label: "Dezvoltatori" },
+  { href: "/unelte/verificare-pdf", label: "Unelte" },
   { href: "/comparatie/eidromania", label: "Comparație" },
   { href: "/preturi", label: "Prețuri" },
 ];
@@ -13,6 +14,7 @@ export const FOOTER_NAV: { title: string; items: NavItem[] }[] = [
     items: [
       { href: "/aplicatie", label: "Aplicație" },
       { href: "/dezvoltatori", label: "Dezvoltatori" },
+      { href: "/unelte/verificare-pdf", label: "Unelte" },
       { href: "/comparatie/eidromania", label: "Comparație" },
       { href: "/preturi", label: "Prețuri" },
     ],

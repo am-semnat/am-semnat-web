@@ -235,12 +235,12 @@ export default function DezvoltatoriPage() {
               chip-ul e autentic plus dacă lanțul s-a închis. Dacă nu vrei să
               faci asta on-device -{" "}
               <a
-                href="https://www.npmjs.com/package/@amsemnat/verifier-node"
+                href="https://www.npmjs.com/package/@amsemnat/verifier"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-ink hover:text-cobalt-600 underline decoration-dotted underline-offset-4 transition-colors"
               >
-                @amsemnat/verifier-node
+                @amsemnat/verifier
               </a>{" "}
               îți permite să muți validarea pe server, sau o folosești{" "}
               <Link

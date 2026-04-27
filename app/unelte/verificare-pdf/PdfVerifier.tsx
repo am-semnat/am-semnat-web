@@ -4,7 +4,7 @@ import { useCallback, useRef, useState } from "react";
 import {
   verifyPadesSignatures,
   type PadesVerificationResult,
-} from "@amsemnat/verifier-node";
+} from "@amsemnat/verifier";
 import { CornerBrackets } from "@/components/marketing/CornerBrackets";
 
 type State =

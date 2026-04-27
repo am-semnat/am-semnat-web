@@ -20,12 +20,12 @@ const explainer = [
   {
     index: "02 / 03",
     title: "Ce nu verificăm încă",
-    body: "Timestamp-uri (PAdES B-T), revocare prin CRL / OCSP / LTV. signedAt vine din atributul signingTime, nu dintr-un Timestamp Token. Aliniat cu @amsemnat/verifier-node 0.1.x.",
+    body: "Timestamp-uri (PAdES B-T), revocare prin CRL / OCSP / LTV. signedAt vine din atributul signingTime, nu dintr-un Timestamp Token. Aliniat cu @amsemnat/verifier 0.1.x.",
   },
   {
     index: "03 / 03",
     title: "On-device",
-    body: "Fișierul tău nu pleacă din browser. Tot codul de verificare e în @amsemnat/verifier-node, deschis pe npm - poți face audit, fork, sau muta verificarea pe server-ul tău.",
+    body: "Fișierul tău nu pleacă din browser. Tot codul de verificare e în @amsemnat/verifier, deschis pe npm - poți face audit, fork, sau muta verificarea pe server-ul tău.",
   },
 ];
 
@@ -195,12 +195,12 @@ export default function VerificarePdfPage() {
             <p>
               Pagina asta folosește{" "}
               <a
-                href="https://www.npmjs.com/package/@amsemnat/verifier-node"
+                href="https://www.npmjs.com/package/@amsemnat/verifier"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-ink hover:text-cobalt-600 underline decoration-dotted underline-offset-4 transition-colors"
               >
-                @amsemnat/verifier-node
+                @amsemnat/verifier
               </a>{" "}
               direct în browser. Același pachet rulează în Node 20+, Cloudflare
               Workers, Deno și Bun - îl poți pune pe server, într-o funcție
@@ -211,11 +211,11 @@ export default function VerificarePdfPage() {
                 Vezi SDK-urile
               </Button>
               <Button
-                href="https://www.npmjs.com/package/@amsemnat/verifier-node"
+                href="https://www.npmjs.com/package/@amsemnat/verifier"
                 variant="secondary"
                 external
               >
-                npm · verifier-node
+                npm · @amsemnat/verifier
               </Button>
             </div>
           </div>

@@ -27,7 +27,7 @@ export function Footer() {
           <div className="flex flex-col items-start gap-y-8 sm:flex-row sm:items-end sm:justify-between sm:gap-x-6 sm:gap-y-0">
             <div
               aria-hidden
-              className="font-display text-ink -mt-[0.16em] -mb-[0.1em] text-[clamp(3.5rem,17vw,11rem)] leading-[0.85] tracking-[-0.04em] italic"
+              className="font-display text-ink -mt-[0.36em] -mb-[0.1em] text-[clamp(3.5rem,17vw,11rem)] leading-[0.85] tracking-[-0.04em] italic"
             >
               amsemnat
             </div>

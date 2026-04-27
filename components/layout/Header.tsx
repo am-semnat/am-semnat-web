@@ -10,7 +10,7 @@ export function Header() {
     <header className="border-rule bg-paper/85 sticky top-0 z-40 border-b backdrop-blur-md">
       <Container className="flex h-14 items-center justify-between">
         <Link href="/" className="group flex items-center gap-2.5">
-          <span className="border-ink/85 relative inline-flex h-7 w-7 items-center justify-center border bg-transparent">
+          <span className="border-ink/10 relative inline-flex h-7 w-7 items-center justify-center border bg-transparent">
             <span
               aria-hidden
               className="border-cobalt-500 absolute -top-px -left-px h-1.5 w-1.5 border-t border-l"
@@ -27,7 +27,7 @@ export function Header() {
               aria-hidden
               className="border-cobalt-500 absolute -right-px -bottom-px h-1.5 w-1.5 border-r border-b"
             />
-            <span className="font-display text-ink mt-0.5 text-[14px] leading-none italic">
+            <span className="font-display text-ink mt-0.5 -translate-y-[0.12em] text-[14px] leading-none italic">
               a
             </span>
           </span>

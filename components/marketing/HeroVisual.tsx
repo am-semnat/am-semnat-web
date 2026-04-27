@@ -21,12 +21,23 @@ export function HeroVisual() {
           <rect width="100%" height="100%" fill="url(#hero-dots)" />
         </svg>
 
-        <CornerBrackets size={26} color="#0e0e10" inset={-4} strokeWidth={1} />
+        <CornerBrackets
+          size={26}
+          color="#0e0e1055"
+          inset={-6}
+          strokeWidth={1}
+        />
 
-        <div className="absolute top-1/2 left-1/2 h-px w-3 -translate-x-1/2 -translate-y-1/2 bg-[#0e0e10]/30" aria-hidden />
-        <div className="absolute top-1/2 left-1/2 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-[#0e0e10]/30" aria-hidden />
+        <div
+          className="absolute top-1/2 left-1/2 h-px w-3 -translate-x-1/2 -translate-y-1/2 bg-[#0e0e10]/30"
+          aria-hidden
+        />
+        <div
+          className="absolute top-1/2 left-1/2 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-[#0e0e10]/30"
+          aria-hidden
+        />
 
-        <div className="absolute top-4 right-4 left-4 flex items-start justify-between font-mono text-[9px] tracking-[0.22em] text-[#0e0e10]/55 uppercase">
+        <div className="absolute top-6 right-6 left-6 flex items-start justify-between font-mono text-[9px] tracking-[0.22em] text-[#0e0e10]/55 uppercase">
           <span>SDK / v0.1.x</span>
           <span>RO · CEI · NFC</span>
         </div>
@@ -39,13 +50,13 @@ export function HeroVisual() {
               inset={4}
               strokeWidth={1.25}
             />
-            <span className="font-display text-ink translate-y-[-0.06em] text-[9rem] leading-none italic md:text-[10.5rem]">
+            <span className="font-display text-ink translate-y-[-0.12em] text-[9rem] leading-none italic md:text-[10.5rem]">
               a
             </span>
           </div>
         </div>
 
-        <div className="absolute right-4 bottom-16 left-4 space-y-1 font-mono text-[9px] tracking-[0.28em] text-[#0e0e10]/45 uppercase">
+        <div className="absolute right-6 bottom-16 left-6 space-y-1 font-mono text-[9px] tracking-[0.28em] text-[#0e0e10]/45 uppercase">
           <div className="truncate">
             P&lt;ROUAMSEMNAT&lt;&lt;OPEN&lt;SOURCE&lt;EID&lt;TOOLKIT&lt;&lt;&lt;
           </div>
@@ -58,15 +69,27 @@ export function HeroVisual() {
           </div>
         </div>
 
-        <div className="absolute right-4 bottom-4 left-4 flex items-end justify-between font-mono text-[9px] tracking-[0.22em] text-[#0e0e10]/55 uppercase">
+        <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between font-mono text-[9px] tracking-[0.22em] text-[#0e0e10]/55 uppercase">
           <span>signed · București</span>
           <span>open / source</span>
         </div>
 
-        <div className="absolute top-4 left-1/2 h-3 w-px -translate-x-1/2 bg-[#0e0e10]/30" aria-hidden />
-        <div className="absolute bottom-4 left-1/2 h-3 w-px -translate-x-1/2 bg-[#0e0e10]/30" aria-hidden />
-        <div className="absolute top-1/2 left-4 h-px w-3 -translate-y-1/2 bg-[#0e0e10]/30" aria-hidden />
-        <div className="absolute top-1/2 right-4 h-px w-3 -translate-y-1/2 bg-[#0e0e10]/30" aria-hidden />
+        <div
+          className="absolute top-4 left-1/2 h-3 w-px -translate-x-1/2 bg-[#0e0e10]/30"
+          aria-hidden
+        />
+        <div
+          className="absolute bottom-4 left-1/2 h-3 w-px -translate-x-1/2 bg-[#0e0e10]/30"
+          aria-hidden
+        />
+        <div
+          className="absolute top-1/2 left-4 h-px w-3 -translate-y-1/2 bg-[#0e0e10]/30"
+          aria-hidden
+        />
+        <div
+          className="absolute top-1/2 right-4 h-px w-3 -translate-y-1/2 bg-[#0e0e10]/30"
+          aria-hidden
+        />
       </div>
     </div>
   );

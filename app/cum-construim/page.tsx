@@ -23,7 +23,7 @@ const blocks: Block[] = [
     title: "De ce scriem despre asta",
     body: (
       <>
-        AmSemnat atinge identitatea și semnătura - două dintre componentele
+        AmSemnat are de a face cu identitatea și semnătura - două dintre componentele
         critice pentru încredere într-un produs digital. Codul care le
         manipulează merită să fie auditabil. De aceea suntem deschiși despre
         cod, dar și despre{" "}
@@ -208,7 +208,7 @@ export default function CumConstruimPage() {
         <p className="text-ink-muted mt-7 max-w-[58ch] text-lg leading-relaxed md:text-xl">
           AmSemnat e construit cu Claude Code ca partener de pair programming.
           Asta înseamnă cod scris mai rapid și paritate cross-platform între
-          SDK-uri. Nu înseamnă „AI-cripto-magic”. Uite mai exact unde intervine
+          SDK-uri. Nu înseamnă că lăsăm deciziile critice pe seama AI-ului. Uite mai exact unde intervine
           AI-ul în proces și unde rămâne factorul uman:
         </p>
       </Container>

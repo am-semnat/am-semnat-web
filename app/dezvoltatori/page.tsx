@@ -93,11 +93,6 @@ const roadmap = [
   },
   {
     status: "planificat",
-    title: "verifier-node",
-    body: "Pachet Node.js pentru verificarea passive a unei semnături produse pe device - pentru servere care nu vor să implementeze passive auth de la zero.",
-  },
-  {
-    status: "planificat",
     title: "Documentație dedicată",
     body: "docs.amsemnat.ro cu API reference structurată, generată din KDoc / DocC. Până atunci: README-urile pe GitHub.",
   },
@@ -237,8 +232,16 @@ export default function DezvoltatoriPage() {
               Practic: descarci CSCA-ul publicat de DGP / MAI, îl pasezi ca
               parametru la verifyPassiveOffline(), și SDK-ul îți spune dacă
               chip-ul e autentic plus dacă lanțul s-a închis. Dacă nu vrei să
-              faci asta on-device - verifier-node (planificat) îți permite să
-              muți validarea pe server.
+              faci asta on-device -{" "}
+              <a
+                href="https://www.npmjs.com/package/@amsemnat/verifier-node"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink hover:text-cobalt-600 underline decoration-dotted underline-offset-4 transition-colors"
+              >
+                @amsemnat/verifier-node
+              </a>{" "}
+              îți permite să muți validarea pe server.
             </p>
           </div>
           <aside className="md:col-span-5">

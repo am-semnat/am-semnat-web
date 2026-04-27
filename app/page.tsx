@@ -253,7 +253,7 @@ export default function Home() {
         title={
           <>
             Față de SDK-urile comercial,{" "}
-            <em className="font-light italic">economia se vede</em>.
+            <em className="font-light italic">avantajele se văd</em>.
           </>
         }
         bordered

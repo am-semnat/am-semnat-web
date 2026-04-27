@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "./Container";
+import { MobileMenu } from "./MobileMenu";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { PRIMARY_NAV } from "@/lib/nav";
 import { GITHUB_ORG_URL, SITE_NAME } from "@/lib/site";
@@ -50,16 +51,19 @@ export function Header() {
           ))}
         </nav>
 
-        <a
-          href={GITHUB_ORG_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-ink-muted hover:text-ink inline-flex items-center gap-2 p-1 text-[13px] transition-colors"
-          aria-label="GitHub"
-        >
-          <GitHubIcon className="h-4 w-4" />
-          <span className="hidden sm:inline">GitHub</span>
-        </a>
+        <div className="flex items-center gap-1">
+          <a
+            href={GITHUB_ORG_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink-muted hover:text-ink inline-flex items-center gap-2 p-1 text-[13px] transition-colors"
+            aria-label="GitHub"
+          >
+            <GitHubIcon className="h-4 w-4" />
+            <span className="hidden sm:inline">GitHub</span>
+          </a>
+          <MobileMenu />
+        </div>
       </Container>
     </header>
   );

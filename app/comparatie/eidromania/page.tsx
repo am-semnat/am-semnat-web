@@ -391,12 +391,12 @@ export default function ComparatieEidromaniaPage() {
                 Notă editorială
               </div>
               <p className="text-ink-muted mt-4 max-w-[44ch] text-[14px] leading-relaxed">
-                eidromania.ro a construit primul SDK comercial pentru CEI - fără
-                ei, ecosistemul ar fi fost mai sărac. Această pagină nu e o
-                concurență ostilă, e o alternativă axată diferit. Dacă ești la
-                ei și nu te-am convins,{" "}
-                <em className="text-ink font-display italic">rămâneți acolo</em>
-                . Dacă te-am convins, ne găsești pe GitHub.
+                eidromania.ro a construit primul SDK comercial pentru CEI — un
+                pas important pentru ecosistem. Această pagină prezintă o
+                alternativă, cu o abordare diferită. Dacă soluția lor ți se
+                potrivește,{" "}
+                <em className="text-ink font-display italic">rămâi acolo</em>.
+                Dacă nu, ne găsești pe GitHub.
               </p>
             </div>
           </aside>

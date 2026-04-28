@@ -2,16 +2,17 @@
 // Regenerate the website's favicon + structured-data icon PNGs from
 // public/source/amsemnat-logo.svg. Run with: npm run generate:icons
 //
-// Only the 32px favicon uses the full Monogram composition (glyph + ink
-// corner brackets) — at tab-icon scale the brackets give it intentional
-// editorial framing instead of reading as a plain plate of paper. The
-// 512px icons are bare glyph-on-paper since they sit in contexts (Open
-// Graph, structured-data org logo) where the Monogram brackets would
-// compete with surrounding chrome.
+// The two favicon files use the full Monogram composition (glyph + ink
+// corner brackets) — at tab-icon scale the brackets give the mark
+// intentional editorial framing instead of reading as a plain plate of
+// paper. The structured-data org logo is bare glyph-on-paper since it
+// sits in contexts (Google rich results, OG previews) where the
+// brackets would compete with surrounding chrome.
 //
 // Outputs:
-//  - app/icon.png         (512×512) — Next.js auto-detected favicon.
-//  - public/favicon.png   (32×32)   — fallback favicon (Monogram).
+//  - app/icon.png         (512×512) — Next.js auto-detected favicon
+//                                     (this is what browsers display).
+//  - public/favicon.png   (32×32)   — legacy /favicon.png fallback.
 //  - public/icon.png      (512×512) — structured-data Organization logo
 //                                     (referenced from app/layout.tsx).
 
@@ -75,7 +76,7 @@ async function render({ size, padding = 0, brackets = null, outPath }) {
   }];
 
   if (brackets) {
-    const bracketsSvg = buildBracketsSvg({ size, color: INK, ...brackets });
+    const bracketsSvg = buildBracketsSvg({ size, color: COBALT, ...brackets });
     const bracketsBuf = await sharp(Buffer.from(bracketsSvg), { density: 300 })
       .resize(size, size, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
       .png()
@@ -92,10 +93,14 @@ async function render({ size, padding = 0, brackets = null, outPath }) {
   return outPath;
 }
 
+// Same bracket proportions on both favicon files so they look identical at
+// any size browsers pick (16/32/64/…). strokeFrac stays at 0.040 so the
+// stroke survives downscaling from 512 → 32 (≈1px floor).
+const FAVICON_BRACKETS = { frameFrac: 0.84, glyphFrac: 0.60, armFrac: 0.32, strokeFrac: 0.040 };
+
 const TARGETS = [
-  { outPath: resolve(ROOT, 'app/icon.png'),       size: 512, padding: 0.14 },
-  { outPath: resolve(ROOT, 'public/favicon.png'), size: 32,
-    brackets: { frameFrac: 0.84, glyphFrac: 0.60, armFrac: 0.32, strokeFrac: 0.040 } },
+  { outPath: resolve(ROOT, 'app/icon.png'),       size: 512, brackets: FAVICON_BRACKETS },
+  { outPath: resolve(ROOT, 'public/favicon.png'), size: 32,  brackets: FAVICON_BRACKETS },
   { outPath: resolve(ROOT, 'public/icon.png'),    size: 512, padding: 0.14 },
 ];
 

@@ -89,6 +89,41 @@ const sections = [
   },
   {
     index: "04",
+    id: "multi-sign",
+    title: "Multi-sign — semnare în grup cu criptare end-to-end",
+    body: (
+      <>
+        Pentru semnarea în grup, documentul tău este cifrat pe
+        dispozitiv cu AES-256-GCM înainte de încărcare. Cheia e
+        derivată (PBKDF2, 100.000 iterații) dintr-un{" "}
+        <strong className="text-ink font-medium">
+          cod de securitate de 8 caractere
+        </strong>{" "}
+        pe care îl partajezi cu semnatarii — serverul nu primește
+        codul, deci nu poate citi conținutul.
+        <br />
+        <br />
+        Pe server păstrăm: blob-ul cifrat, numele fișierului (în text
+        clar, ca să-l recunoască semnatarii), materialul de derivare a
+        cheii și metadate ale sesiunii (număr de semnatari, timpi,
+        stare). Toate se șterg automat după{" "}
+        <strong className="text-ink font-medium">72 de ore</strong> —
+        același interval e și fereastra în care semnatarii descarcă
+        documentul finalizat. Creatorul poate șterge sesiunea
+        anticipat direct din aplicație, cât timp are dispozitivul pe
+        care a creat-o (token-ul care autorizează ștergerea e stocat
+        local pe acel dispozitiv); dacă a pierdut acel acces — de
+        exemplu prin reinstalarea aplicației — sesiunea se șterge la
+        expirarea automată.
+        <br />
+        <br />
+        Bază legală: Art. 6(1)(b) GDPR (executarea contractului — ai
+        cerut serviciul de semnare în grup).
+      </>
+    ),
+  },
+  {
+    index: "05",
     id: "verificare",
     title: "Verificare opțională a autenticității cardului",
     body: (
@@ -126,7 +161,7 @@ const sections = [
     ),
   },
   {
-    index: "05",
+    index: "06",
     id: "autentificare-oidc",
     title: "Autentificare OIDC pentru aplicații terțe",
     body: (
@@ -186,7 +221,7 @@ const sections = [
     ),
   },
   {
-    index: "06",
+    index: "07",
     id: "biometrice",
     title: "Date biometrice și CNP (Art. 9 GDPR, Legea 190/2018)",
     body: (
@@ -210,7 +245,7 @@ const sections = [
     ),
   },
   {
-    index: "07",
+    index: "08",
     id: "sdk",
     title: "SDK-urile open source",
     body: (
@@ -225,7 +260,7 @@ const sections = [
     ),
   },
   {
-    index: "08",
+    index: "09",
     id: "cookies",
     title: "Cookie-uri",
     body: (
@@ -239,7 +274,7 @@ const sections = [
     ),
   },
   {
-    index: "09",
+    index: "10",
     id: "drepturi",
     title: "Drepturile tale (GDPR)",
     body: (
@@ -251,21 +286,32 @@ const sections = [
         (Art. 21), retragerea consimțământului în orice moment
         (Art. 7(3)). Cere oricare dintre acestea la {CONTACT_EMAIL}.
         Răspundem în termen de o lună (cu posibilă prelungire pentru
-        cereri complexe, conform GDPR). Pentru fluxurile descrise în
-        §03, §04 și §05, datele identificabile pe care le păstrăm
-        sunt minime sau zero - în practică, nu avem ce să-ți arătăm
-        sau să ștergem la cerere. Pentru §05, după expirarea
-        cache-ului de 10 minute, singurul lucru care mai face
-        referire la utilizator e{" "}
-        <code className="text-[0.9em]">sub</code>-ul (HMAC determinist
-        din CNP-ul de pe card - nu există un tabel CNP→sub pe care să-l
-        ștergem, iar sub-ul în sine e o valoare reproductibilă din
-        același card, nu o evidență a unei vizite anterioare).
+        cereri complexe, conform GDPR). În practică, pentru fluxurile
+        descrise mai sus datele identificabile sunt minime sau
+        temporare:
+        <br />
+        <br />
+        — <strong className="text-ink font-medium">§03</strong> (local):
+        nu părăsesc dispozitivul, deci nu avem nimic de arătat sau
+        șters.
+        <br />— <strong className="text-ink font-medium">§04</strong>{" "}
+        (multi-sign): blob cifrat + nume de fișier + metadate ale
+        sesiunii, șterse automat după 72 de ore; creatorul poate
+        șterge anticipat din aplicație, dacă mai are dispozitivul pe
+        care a creat sesiunea.
+        <br />— <strong className="text-ink font-medium">§05</strong>{" "}
+        (verificare): nu păstrăm nimic, cererile nu sunt logate cu corp.
+        <br />— <strong className="text-ink font-medium">§06</strong>{" "}
+        (OIDC): PII în memorie maxim 10 minute, apoi șters automat. Nu
+        menținem un tabel CNP→<code className="text-[0.9em]">sub</code>{" "}
+        — <code className="text-[0.9em]">sub</code>-ul e o valoare
+        reproductibilă din același card, nu o evidență a unei vizite
+        anterioare.
       </>
     ),
   },
   {
-    index: "10",
+    index: "11",
     id: "contact",
     title: "Contact și ANSPDCP",
     body: (
@@ -293,7 +339,7 @@ const sections = [
     ),
   },
   {
-    index: "11",
+    index: "12",
     id: "modificari",
     title: "Modificări",
     body: (

@@ -4,7 +4,25 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/marketing/JsonLd";
+import {
+  CONTACT_EMAIL,
+  GITHUB_ORG_URL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon.png`,
+  description: SITE_DESCRIPTION,
+  email: CONTACT_EMAIL,
+  sameAs: [GITHUB_ORG_URL],
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,6 +78,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <Analytics />
+        <JsonLd data={organizationSchema} />
       </body>
     </html>
   );

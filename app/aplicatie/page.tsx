@@ -7,12 +7,16 @@ import { Button } from "@/components/ui/Button";
 import { AppDownloadCTA } from "@/components/marketing/AppDownloadCTA";
 import { AppHeroVisual } from "@/components/marketing/AppHeroVisual";
 import { FAQ, type FaqItem } from "@/components/marketing/FAQ";
+import { JsonLd } from "@/components/marketing/JsonLd";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Aplicația AmSemnat",
   description:
     "Aplicația mobilă AmSemnat - semnezi PDF-uri cu CEI-ul tău, gratuit pentru semnare individuală. Sesiuni de semnare în grup în planul Echipe. OIDC, fără KYC, local-first.",
 };
+
+type FaqEntry = FaqItem & { plainAnswer: string };
 
 const groupSteps = [
   {
@@ -45,9 +49,11 @@ const padesFacts = [
   { label: "Nivel eIDAS", value: "Semnătură electronică avansată (AdES)" },
 ];
 
-const faq: FaqItem[] = [
+const faq: FaqEntry[] = [
   {
     question: "E gratuit?",
+    plainAnswer:
+      "Da, pentru semnare individuală - pentru totdeauna. Aplicația mobilă, autentificarea OIDC și SDK-urile native sunt gratuite, fără limite per dispozitiv, fără KYC, fără cont obligatoriu. Sesiunile de semnare în grup sunt parte din planul Echipe - un plan dedicat pentru organizații, cu pricing per echipă.",
     answer: (
       <>
         Da, pentru semnare individuală - pentru totdeauna. Aplicația
@@ -69,6 +75,8 @@ const faq: FaqItem[] = [
   },
   {
     question: "Funcționează cu CEI-ul meu?",
+    plainAnswer:
+      "Da, dacă ai cartea electronică de identitate emisă după 2025 (cu chip NFC).",
     answer: (
       <>
         Da, dacă ai cartea electronică de identitate emisă după 2025 (cu
@@ -78,6 +86,8 @@ const faq: FaqItem[] = [
   },
   {
     question: "Ce e CAN-ul și de unde îl iau?",
+    plainAnswer:
+      "CAN (Card Access Number) e codul de 6 cifre tipărit pe fața CEI-ului, în partea de jos. E necesar pentru handshake-ul PACE care deblochează chip-ul.",
     answer: (
       <>
         CAN (Card Access Number) e codul de 6 cifre tipărit pe fața
@@ -88,6 +98,8 @@ const faq: FaqItem[] = [
   },
   {
     question: "Are validitate juridică ce semnez aici?",
+    plainAnswer:
+      "Semnătura produsă e o semnătură electronică avansată (AdES) conform eIDAS - recunoscută legal în România și UE. Pentru contexte care cer semnătură calificată (QES - anumite acte notariale, contracte specifice), ai nevoie de un certificat emis de un Trust Service Provider eIDAS calificat (certSIGN, Trans Sped etc.). AmSemnat folosește certificatul de pe CEI-ul tău, care e AdES, nu QES.",
     answer: (
       <>
         Semnătura produsă e o{" "}
@@ -106,6 +118,8 @@ const faq: FaqItem[] = [
   },
   {
     question: "Cum diferă de ROeID?",
+    plainAnswer:
+      "ROeID e aplicația oficială a statului - funcționează bine pentru cazul de bază: deschizi aplicația, alegi un PDF, îl semnezi. AmSemnat acoperă două lucruri pe care ROeID nu le face: sesiuni de semnare în grup (multi-semnatar, link-uri partajate per persoană) și intrare frictionless (fără pre-onboarding KYC cu face-scan și legare la portalul gov). Pentru integrări cu portalurile statului (CNAS, ANAF, ghiseul.ro) rămâne ROeID - noi nu ne bagăm.",
     answer: (
       <>
         ROeID e aplicația oficială a statului - funcționează bine pentru
@@ -126,6 +140,8 @@ const faq: FaqItem[] = [
   },
   {
     question: "Datele mele unde merg?",
+    plainAnswer:
+      "Pe device-ul tău. Aplicația citește chip-ul prin NFC, produce semnătura local cu cheia de pe applet-ul de signing, și salvează PDF-ul semnat unde îi spui. Pentru sesiuni de semnare în grup, documentul e transmis criptat printr-un canal de relay și decriptat doar la semnatarii autorizați. Nu păstrăm copii cleartext, nu logăm conținutul, nu construim profiluri.",
     answer: (
       <>
         Pe device-ul tău. Aplicația citește chip-ul prin NFC, produce
@@ -139,9 +155,46 @@ const faq: FaqItem[] = [
   },
 ];
 
+const softwareApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: SITE_NAME,
+  url: `${SITE_URL}/aplicatie`,
+  description:
+    "Aplicație mobilă pentru iOS și Android care citește, verifică și semnează PDF-uri cu cartea electronică de identitate (CEI) prin NFC. Local-first, fără KYC, fără cont obligatoriu.",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Android, iOS",
+  inLanguage: "ro",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+  },
+  author: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map(({ question, plainAnswer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: plainAnswer,
+    },
+  })),
+};
+
 export default function AplicatiePage() {
   return (
     <>
+      <JsonLd data={softwareApplicationSchema} />
+      <JsonLd data={faqSchema} />
       <section className="border-rule relative overflow-hidden border-b">
         <Container className="pt-12 pb-20 md:pt-20 md:pb-28">
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">

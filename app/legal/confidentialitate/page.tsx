@@ -6,20 +6,31 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Politică de confidențialitate",
   description:
-    "Ce date colectează site-ul amsemnat.ro și cum le folosim.",
+    "Ce date colectează site-ul amsemnat.ro și aplicația mobilă, când părăsesc dispozitivul tău, și pe ce bază GDPR le prelucrăm.",
 };
 
 const sections = [
   {
     index: "01",
+    id: "cine-suntem",
     title: "Cine suntem",
     body: (
       <>
-        AmSemnat e un proiect open source operat din București. Oferim o
-        aplicație mobilă și trei SDK-uri (Android, iOS, Expo) pentru
+        AmSemnat e un proiect open source operat din București. Oferim
+        o aplicație mobilă și trei SDK-uri (Android, iOS, Expo) pentru
         citirea și semnarea cu cartea electronică de identitate (CEI).
-        Site-ul amsemnat.ro e operat de echipa AmSemnat. Pentru întrebări
-        legate de această politică, scrie-ne la{" "}
+        Site-ul amsemnat.ro și serviciile online (notar.amsemnat.ro)
+        sunt operate de echipa AmSemnat. În anumite fluxuri suntem{" "}
+        <strong className="text-ink font-medium">
+          operator de date
+        </strong>{" "}
+        (decidem ce și de ce prelucrăm), în altele suntem{" "}
+        <strong className="text-ink font-medium">
+          persoană împuternicită
+        </strong>{" "}
+        (intermediem datele tale către aplicația care a inițiat
+        fluxul). Detaliile pentru fiecare flux sunt mai jos. Pentru
+        întrebări legate de această politică, scrie-ne la{" "}
         <a
           href={`mailto:${CONTACT_EMAIL}`}
           className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
@@ -32,7 +43,8 @@ const sections = [
   },
   {
     index: "02",
-    title: "Ce date colectăm pe site",
+    id: "site",
+    title: "Site-ul amsemnat.ro",
     body: (
       <>
         <strong className="text-ink font-medium">
@@ -44,72 +56,249 @@ const sections = [
         <strong className="text-ink font-medium">
           Adresa de email pe care o trimiți voluntar
         </strong>{" "}
-        la {CONTACT_EMAIL}, dacă alegi să ne contactezi. Atât. Nu există
-        cont, nu există formulare, nu există tracking de marketing.
+        la {CONTACT_EMAIL}, dacă alegi să ne contactezi. Atât. Nu
+        există cont, nu există formulare, nu există tracking de
+        marketing. Bază legală: Art. 6(1)(f) GDPR (interes legitim -
+        măsurarea traficului) pentru Plausible, Art. 6(1)(a)
+        (consimțământ) pentru emailul pe care alegi să ni-l trimiți.
       </>
     ),
   },
   {
     index: "03",
-    title: "Aplicația mobilă",
+    id: "aplicatie-local",
+    title: "Aplicația mobilă - ce rămâne pe dispozitivul tău",
     body: (
       <>
-        Funcționează local pe dispozitivul tău. Datele de pe chip-ul CEI,
-        semnăturile produse și fișierele PDF nu trec prin serverele
-        noastre. Detalii suplimentare în politica de confidențialitate a
-        aplicației, disponibilă în App Store și Google Play când aplicația
-        e publicată.
+        În mod implicit, tot ce face aplicația rulează local. Datele
+        citite de pe chip-ul CEI (nume, CNP, fotografie, adresă etc.),
+        PIN-urile pe care le introduci, semnăturile produse și
+        fișierele PDF{" "}
+        <strong className="text-ink font-medium">
+          nu trec prin serverele noastre
+        </strong>
+        . Pentru semnarea în grup folosim criptare end-to-end
+        (AES-256-GCM): documentul e cifrat pe dispozitivul tău cu o
+        cheie pe care doar semnatarii o cunosc, iar serverul stochează
+        doar blob-ul cifrat - nu poate citi conținutul. CAN-ul (codul
+        de pe fața cardului) e salvat opțional în zona securizată a
+        sistemului de operare (Keychain pe iOS, Keystore pe Android)
+        ca să nu trebuiască să-l reintroduci.
       </>
     ),
   },
   {
     index: "04",
-    title: "SDK-urile",
+    id: "verificare",
+    title: "Verificare opțională a autenticității cardului",
     body: (
       <>
-        Bibliotecile open source (Android, iOS, Expo) nu colectează
-        telemetrie de niciun fel. Toată prelucrarea NFC + criptografică
-        rulează pe dispozitivul utilizatorului final al aplicației care
-        integrează SDK-ul. Dacă tu construiești o aplicație folosind
-        SDK-urile, propria ta politică de confidențialitate trebuie să
-        acopere ce date colectezi de la utilizatorii tăi.
+        După ce citești cardul, aplicația îți oferă opțiunea de a
+        verifica că datele de pe el sunt într-adevăr emise de statul
+        român și nu au fost modificate. Această verificare necesită
+        certificatele autorităților de stat (CSCA), care se schimbă în
+        timp și nu pot fi incluse în aplicație fără actualizări la
+        magazinele de aplicații - de aceea o facem pe serverul nostru.
+        <br />
+        <br />
+        <strong className="text-ink font-medium">Este opt-in:</strong>{" "}
+        nu se întâmplă decât după ce apeși butonul „Verifică
+        autenticitatea” pe ecranul cu rezultate.{" "}
+        <strong className="text-ink font-medium">
+          Trimitem doar materialul criptografic
+        </strong>{" "}
+        - semnătura digitală de pe card (SOD) și fișierele de date
+        (DG1, DG2, DG14) - strict cât e nevoie pentru a calcula
+        hash-urile și a verifica semnătura. Datele personale (nume,
+        CNP, adresă) <strong className="text-ink font-medium">nu</strong>{" "}
+        se trimit pentru această operațiune. Transmiterea se face prin
+        HTTPS. Pe server datele se procesează în memorie, nu sunt
+        stocate, iar cererile către endpoint-ul de verificare nu sunt
+        logate cu corpul lor (fără SOD, fără DG-uri în log-uri).
+        Răspunsul e binar: semnătura e validă / nu e validă. Operator:
+        AmSemnat. Bază legală: Art. 6(1)(a) GDPR (consimțământul tău
+        explicit prin apăsarea butonului) și Art. 9(2)(a) pentru
+        fotografia din DG2 (transmisă doar pentru a-i calcula hash-ul
+        - serverul nu o decodează ca imagine).
       </>
     ),
   },
   {
     index: "05",
-    title: "Cookie-uri",
+    id: "autentificare-oidc",
+    title: "Autentificare OIDC pentru aplicații terțe",
     body: (
       <>
-        Site-ul nu folosește cookie-uri pentru tracking sau publicitate.
-        Plausible Analytics rulează cookieless, iar Vercel poate seta
-        cookie-uri tehnice pentru rutarea cererilor și prevenția
-        abuzurilor.
+        Când o altă aplicație îți cere să te autentifici cu CEI prin
+        AmSemnat (protocol OpenID Connect), rolurile sunt diferite:
+        aplicația terță este{" "}
+        <strong className="text-ink font-medium">
+          operatorul de date
+        </strong>{" "}
+        (a inițiat fluxul, a definit ce afirmații îi trebuie despre
+        tine), iar AmSemnat este{" "}
+        <strong className="text-ink font-medium">
+          persoană împuternicită
+        </strong>{" "}
+        (intermediem citirea cardului și transmiterea datelor către
+        ea).
+        <br />
+        <br />
+        Pentru OIDC trimitem la serverul nostru{" "}
+        <strong className="text-ink font-medium">
+          materialul criptografic plus datele de identitate
+        </strong>{" "}
+        (nume, prenume, CNP, data nașterii, cetățenie, sex,
+        fotografie, după caz) pentru ca aplicația terță să primească
+        afirmațiile pe care le-a cerut. Datele personale rămân în
+        cache-ul serverului maxim{" "}
+        <strong className="text-ink font-medium">10 minute</strong>{" "}
+        (durata unei interacțiuni OIDC), apoi sunt șterse automat;
+        după acest interval, dacă aplicația terță îți cere din nou
+        datele, va trebui să te reautentifici cu cardul. Artefactele
+        OIDC mai lungi (sesiunea, grant-urile, refresh tokens - TTL
+        maxim 30 de zile, conform protocolului) conțin doar
+        identificatorul{" "}
+        <code className="text-[0.9em]">sub</code>, nu și PII-ul.
+        <br />
+        <br />
+        Nu menținem o bază de date de utilizatori -{" "}
+        <code className="text-[0.9em]">sub</code> e calculat
+        determinist din CNP-ul tău printr-o funcție criptografică cu
+        cheie secretă (HMAC-SHA256), nu e stocat ca atare nicăieri.
+        La o reautentificare cu aceeași carte,{" "}
+        <code className="text-[0.9em]">sub</code> se recalculează și
+        e identic cu cel anterior, ceea ce permite aplicației terțe
+        să te recunoască.
+        <br />
+        <br />
+        Introducerea PIN-ului 1 pe ecranul de autentificare constituie
+        consimțământ explicit pentru transmiterea datelor către
+        aplicația care a inițiat fluxul. Bază legală: Art. 6(1)(b)
+        GDPR (executarea contractului dintre tine și aplicația terță)
+        și Art. 9(2)(a) (consimțământ explicit prin PIN) pentru
+        datele biometrice. Dacă vrei să afli ce face aplicația terță
+        cu datele după ce le primește, citește-i propria politică de
+        confidențialitate - pentru acea fază rolul nostru se încheie.
       </>
     ),
   },
   {
     index: "06",
-    title: "Drepturile tale (GDPR)",
+    id: "biometrice",
+    title: "Date biometrice și CNP (Art. 9 GDPR, Legea 190/2018)",
     body: (
       <>
-        Conform Regulamentului UE 2016/679, ai dreptul: să afli ce date
-        avem despre tine, să le corectezi sau ștergi, să ne ceri să
-        încetăm prelucrarea, să depui plângere la ANSPDCP. Cere oricare
-        dintre acestea la {CONTACT_EMAIL}. Răspundem în termen de o
-        lună (cu posibilă prelungire pentru cereri complexe, conform
-        GDPR).
+        Fotografia stocată pe chip (DG2) e considerată dată biometrică
+        sub Art. 9 GDPR, iar CNP-ul are protecții suplimentare în
+        Legea 190/2018. Le tratăm ca atare:{" "}
+        <strong className="text-ink font-medium">
+          niciuna dintre operațiunile noastre online (verificare
+          opțională, OIDC) nu se întâmplă fără un gest deliberat al
+          tău
+        </strong>{" "}
+        - apăsarea butonului „Verifică”, respectiv introducerea
+        PIN-ului. Acel gest e baza legală sub Art. 9(2)(a)
+        (consimțământ explicit). Poți retrage consimțământul oricând
+        scriindu-ne la {CONTACT_EMAIL}; pentru fluxurile descrise
+        mai sus, retragerea înseamnă efectiv să nu inițiezi fluxul -
+        nu păstrăm date biometrice „la rece” pe care să le ștergem
+        ulterior.
       </>
     ),
   },
   {
     index: "07",
+    id: "sdk",
+    title: "SDK-urile open source",
+    body: (
+      <>
+        Bibliotecile open source (Android, iOS, Expo) nu colectează
+        telemetrie de niciun fel. Toată prelucrarea NFC + criptografică
+        rulează pe dispozitivul utilizatorului final al aplicației
+        care integrează SDK-ul. Dacă tu construiești o aplicație
+        folosind SDK-urile, propria ta politică de confidențialitate
+        trebuie să acopere ce date colectezi de la utilizatorii tăi.
+      </>
+    ),
+  },
+  {
+    index: "08",
+    id: "cookies",
+    title: "Cookie-uri",
+    body: (
+      <>
+        Site-ul nu folosește cookie-uri pentru tracking sau
+        publicitate. Plausible Analytics rulează cookieless, iar
+        Vercel poate seta cookie-uri tehnice pentru rutarea cererilor
+        și prevenția abuzurilor. Aplicația mobilă nu folosește
+        cookie-uri - nu e un browser.
+      </>
+    ),
+  },
+  {
+    index: "09",
+    id: "drepturi",
+    title: "Drepturile tale (GDPR)",
+    body: (
+      <>
+        Conform Regulamentului UE 2016/679, ai următoarele drepturi:
+        acces la datele pe care le avem despre tine (Art. 15),
+        rectificare (Art. 16), ștergere (Art. 17), restricționarea
+        prelucrării (Art. 18), portabilitate (Art. 20), opoziție
+        (Art. 21), retragerea consimțământului în orice moment
+        (Art. 7(3)). Cere oricare dintre acestea la {CONTACT_EMAIL}.
+        Răspundem în termen de o lună (cu posibilă prelungire pentru
+        cereri complexe, conform GDPR). Pentru fluxurile descrise în
+        §03, §04 și §05, datele identificabile pe care le păstrăm
+        sunt minime sau zero - în practică, nu avem ce să-ți arătăm
+        sau să ștergem la cerere. Pentru §05, după expirarea
+        cache-ului de 10 minute, singurul lucru care mai face
+        referire la utilizator e{" "}
+        <code className="text-[0.9em]">sub</code>-ul (HMAC determinist
+        din CNP-ul de pe card - nu există un tabel CNP→sub pe care să-l
+        ștergem, iar sub-ul în sine e o valoare reproductibilă din
+        același card, nu o evidență a unei vizite anterioare).
+      </>
+    ),
+  },
+  {
+    index: "10",
+    id: "contact",
+    title: "Contact și ANSPDCP",
+    body: (
+      <>
+        Pentru orice întrebare sau cerere GDPR, scrie-ne la{" "}
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
+        >
+          {CONTACT_EMAIL}
+        </a>
+        . Dacă crezi că am încălcat drepturile tale, ai dreptul să
+        depui plângere la Autoritatea Națională de Supraveghere a
+        Prelucrării Datelor cu Caracter Personal (ANSPDCP) -{" "}
+        <a
+          href="https://www.dataprotection.ro"
+          className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
+          target="_blank"
+          rel="noopener"
+        >
+          dataprotection.ro
+        </a>
+        .
+      </>
+    ),
+  },
+  {
+    index: "11",
+    id: "modificari",
     title: "Modificări",
     body: (
       <>
-        Vom actualiza această politică când lansăm funcționalități noi
-        (de exemplu, dashboard-ul cu cont). Versiunea curentă: aprilie
-        2026.
+        Vom actualiza această politică când lansăm funcționalități
+        noi sau când se schimbă infrastructura. Versiunea curentă:
+        aprilie 2026.
       </>
     ),
   },
@@ -124,15 +313,19 @@ export default function ConfidentialitatePage() {
         <em className="font-light italic">confidențialitate</em>.
       </h1>
       <p className="text-ink-muted mt-6 max-w-[55ch] text-lg leading-relaxed">
-        Pe scurt: site-ul nu te urmărește, aplicația rulează local,
-        SDK-urile nu trimit telemetrie. Detalii mai jos.
+        Pe scurt: site-ul nu te urmărește, SDK-urile nu trimit
+        telemetrie, aplicația rulează local pentru fluxurile
+        principale. Pentru verificarea opțională a cardului și pentru
+        autentificarea OIDC trimitem date la serverul nostru - fiecare
+        flux e descris în detaliu mai jos.
       </p>
 
       <div className="border-rule-strong divide-rule mt-16 divide-y border-t md:mt-20">
         {sections.map((s) => (
           <section
             key={s.index}
-            className="grid grid-cols-1 gap-x-10 gap-y-3 py-8 md:grid-cols-12 md:py-10"
+            id={s.id}
+            className="grid scroll-mt-24 grid-cols-1 gap-x-10 gap-y-3 py-8 md:grid-cols-12 md:py-10"
           >
             <div className="md:col-span-3">
               <div className="text-cobalt-600 font-mono text-[11px] tracking-[0.2em] uppercase tabular-nums">

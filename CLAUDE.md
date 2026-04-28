@@ -9,7 +9,7 @@ Guidance for Claude Code when working in `am-semnat-sdk/website/`.
 Marketing website for AmSemnat at `amsemnat.ro` — covers both the
 mobile app (`am-semnat`) and the open-source SDKs (`../android/`,
 `../ios/`, `../expo/`). Next.js 16 App Router, React Server Components
-by default, TypeScript, Tailwind v4, Plausible, Vercel.
+by default, TypeScript, Tailwind v4, Vercel (hosting + Web Analytics).
 
 Source-of-truth strategy doc: `../research/website-plan.md` (goals,
 audiences, IA, competitive positioning, content scope). Real
@@ -42,7 +42,8 @@ paths like `../../components/...`.
 ```
 app/                                Next.js App Router routes (RSC by default)
   layout.tsx                        root shell — <html lang="ro">, three font vars,
-                                    Plausible, Header, Footer; metadataBase + OG defaults
+                                    Header, Footer, Vercel <Analytics />;
+                                    metadataBase + OG defaults
   globals.css                       Tailwind v4 import + @theme tokens + .code-scroll
   sitemap.ts robots.ts              built-in metadata routes (no third-party deps)
   icon.png                          file-convention favicon (no manual <link>)
@@ -81,13 +82,12 @@ components/
                                     placeholders, gated by APPS_LIVE
     RepoCard.tsx                    one tile per SDK package
     FAQ.tsx                         <details> accordion with numbered rows
-    PlausibleScript.tsx             null-renders unless PLAUSIBLE_DOMAIN is set
   icons/
     AppleIcon, GitHubIcon, PlayIcon — small inline SVGs; no icon library
 
 lib/
   site.ts                           SITE_URL, name, OG defaults, env-flag helpers
-                                    (APPS_LIVE, PLAUSIBLE_DOMAIN), CONTACT_EMAIL,
+                                    (APPS_LIVE), CONTACT_EMAIL,
                                     GITHUB_ORG_URL, store URLs
   nav.ts                            PRIMARY_NAV (header) + FOOTER_NAV (4-col)
   packages.ts                       SDK registry data (Maven, CocoaPods, npm) — single
@@ -113,9 +113,10 @@ follow-ups is one PR.
    served from the website. Mirrors SDK invariant #3.
 4. **Versions are single-sourced.** Install lines and version strings
    live in `lib/packages.ts`; never inline them in JSX.
-5. **Plausible is env-gated.** `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` controls
-   whether the script renders. Previews don't pollute production
-   analytics.
+5. **Vercel Web Analytics** is wired via `<Analytics />` in
+   `app/layout.tsx`. Cookieless; no env var needed. Toggle on/off
+   from the Vercel dashboard. Previews don't pollute production
+   stats — Vercel routes them to a separate Preview environment.
 
 ## Design language
 

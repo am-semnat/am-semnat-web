@@ -48,19 +48,28 @@ const sections = [
     body: (
       <>
         <strong className="text-ink font-medium">
-          Statistici agregate prin Plausible Analytics
+          Statistici agregate prin Vercel Web Analytics
         </strong>{" "}
-        - număr de vizualizări, sursa traficului, țara aproximativă.
-        Plausible nu folosește cookie-uri, nu urmărește utilizatori
-        individuali și nu construiește profiluri.{" "}
+        — număr de vizualizări, surse ale traficului, țară aproximativă,
+        tip de dispozitiv. Vercel folosește un hash zilnic al IP-ului
+        + User-Agent pentru a distinge vizitatori unici, fără cookie-uri
+        și fără identificatori persistenți. Nu construim profiluri
+        individuale, nu corelăm vizitele cu date personale.{" "}
         <strong className="text-ink font-medium">
           Adresa de email pe care o trimiți voluntar
         </strong>{" "}
-        la {CONTACT_EMAIL}, dacă alegi să ne contactezi. Atât. Nu
-        există cont, nu există formulare, nu există tracking de
-        marketing. Bază legală: Art. 6(1)(f) GDPR (interes legitim -
-        măsurarea traficului) pentru Plausible, Art. 6(1)(a)
-        (consimțământ) pentru emailul pe care alegi să ni-l trimiți.
+        la{" "}
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
+        >
+          {CONTACT_EMAIL}
+        </a>
+        , dacă alegi să ne contactezi. Atât. Nu există cont, nu există
+        formulare, nu există tracking de marketing. Bază legală: Art.
+        6(1)(f) GDPR (interes legitim — măsurarea traficului) pentru
+        Vercel Web Analytics, Art. 6(1)(a) (consimțământ) pentru
+        emailul de contact.
       </>
     ),
   },
@@ -266,15 +275,47 @@ const sections = [
     body: (
       <>
         Site-ul nu folosește cookie-uri pentru tracking sau
-        publicitate. Plausible Analytics rulează cookieless, iar
-        Vercel poate seta cookie-uri tehnice pentru rutarea cererilor
-        și prevenția abuzurilor. Aplicația mobilă nu folosește
-        cookie-uri - nu e un browser.
+        publicitate. Vercel poate seta cookie-uri tehnice pentru
+        rutarea cererilor și prevenția abuzurilor. Aplicația mobilă nu
+        folosește cookie-uri - nu e un browser.
       </>
     ),
   },
   {
     index: "10",
+    id: "subprocesatori",
+    title: "Subprocesatori",
+    body: (
+      <>
+        Pentru a oferi serviciile de mai sus, ne bazăm pe câțiva
+        furnizori de infrastructură care procesează date în numele
+        nostru (subprocesatori în sensul Art. 28 GDPR):
+        <br />
+        <br />
+        — <strong className="text-ink font-medium">Railway Corp.</strong>{" "}
+        (SUA) — hostează serviciile online de la{" "}
+        <code className="text-[0.9em]">notar.amsemnat.ro</code>:
+        endpoint-urile pentru verificarea opțională a cardului,
+        autentificarea OIDC și sesiunile de semnare în grup, plus
+        baza de date PostgreSQL care stochează metadatele și blob-urile
+        cifrate ale acestor fluxuri.
+        <br />— <strong className="text-ink font-medium">Vercel Inc.</strong>{" "}
+        (SUA) — hostează site-ul amsemnat.ro și deservește paginile lui
+        statice. Furnizează și Vercel Web Analytics (statistici
+        cookieless de trafic). Poate seta cookie-uri tehnice (rutare,
+        prevenție abuz).
+        <br />
+        <br />
+        Pentru transferurile către SUA (Railway, Vercel), aceștia
+        operează sub clauze contractuale standard (SCC) și/sau cadrul
+        EU-US Data Privacy Framework, conform Art. 46 GDPR. Vom
+        actualiza această listă când schimbăm furnizori sau adăugăm
+        alții.
+      </>
+    ),
+  },
+  {
+    index: "11",
     id: "drepturi",
     title: "Drepturile tale (GDPR)",
     body: (
@@ -311,7 +352,7 @@ const sections = [
     ),
   },
   {
-    index: "11",
+    index: "12",
     id: "contact",
     title: "Contact și ANSPDCP",
     body: (
@@ -339,7 +380,7 @@ const sections = [
     ),
   },
   {
-    index: "12",
+    index: "13",
     id: "modificari",
     title: "Modificări",
     body: (

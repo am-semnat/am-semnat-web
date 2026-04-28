@@ -13,5 +13,3 @@ export const APPS_LIVE = process.env.NEXT_PUBLIC_APPS_LIVE === "true";
 
 export const APP_STORE_URL = "";
 export const PLAY_STORE_URL = "";
-
-export const PLAUSIBLE_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "";

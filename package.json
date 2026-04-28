@@ -12,7 +12,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run lint && npm run build",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate:icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "@amsemnat/verifier": "^0.1.2",
@@ -30,6 +31,7 @@
     "eslint-config-next": "16.2.4",
     "prettier": "^3.3.0",
     "prettier-plugin-tailwindcss": "^0.6.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

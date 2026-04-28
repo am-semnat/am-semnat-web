@@ -27,7 +27,7 @@ export function Header() {
               aria-hidden
               className="border-cobalt-500 absolute -right-px -bottom-px h-1.5 w-1.5 border-r border-b"
             />
-            <span className="font-display text-ink mt-0.5 -translate-y-[0.12em] text-[14px] leading-none italic">
+            <span className="font-display text-ink mt-0.5 -translate-y-[0.14em] translate-x-[0.05em] text-[20px] leading-none italic">
               a
             </span>
           </span>

@@ -176,6 +176,7 @@ export function OgFrame({
           flexDirection: "column",
           flexGrow: 1,
           justifyContent: "center",
+          paddingTop: 48,
           fontSize: titleFontSize,
           lineHeight: 1,
           letterSpacing: "-0.025em",

@@ -104,22 +104,24 @@ const sections = [
         <strong className="text-ink font-medium">Este opt-in:</strong>{" "}
         nu se întâmplă decât după ce apeși butonul „Verifică
         autenticitatea” pe ecranul cu rezultate.{" "}
+        Trimitem fișierele strict cât e nevoie pentru a recalcula
+        hash-urile și a verifica semnătura statului — semnătura
+        digitală (SOD) plus fișierele DG1 (datele MRZ: nume, dată
+        naștere, sex, număr document, dată expirare), DG2 (fotografia)
+        și DG14 (parametri criptografici).{" "}
         <strong className="text-ink font-medium">
-          Trimitem doar materialul criptografic
+          CNP-ul și adresa nu se trimit
         </strong>{" "}
-        - semnătura digitală de pe card (SOD) și fișierele de date
-        (DG1, DG2, DG14) - strict cât e nevoie pentru a calcula
-        hash-urile și a verifica semnătura. Datele personale (nume,
-        CNP, adresă) <strong className="text-ink font-medium">nu</strong>{" "}
-        se trimit pentru această operațiune. Transmiterea se face prin
-        HTTPS. Pe server datele se procesează în memorie, nu sunt
-        stocate, iar cererile către endpoint-ul de verificare nu sunt
-        logate cu corpul lor (fără SOD, fără DG-uri în log-uri).
-        Răspunsul e binar: semnătura e validă / nu e validă. Operator:
-        AmSemnat. Bază legală: Art. 6(1)(a) GDPR (consimțământul tău
-        explicit prin apăsarea butonului) și Art. 9(2)(a) pentru
-        fotografia din DG2 (transmisă doar pentru a-i calcula hash-ul
-        - serverul nu o decodează ca imagine).
+        — sunt stocate într-un fișier separat (eData) pe care nu îl
+        includem în cerere. Transmiterea se face prin HTTPS. Pe server
+        datele se procesează în memorie, nu sunt stocate, iar
+        cererile către endpoint-ul de verificare nu sunt logate cu
+        corpul lor (fără SOD, fără DG-uri în log-uri). Răspunsul e
+        binar: semnătura e validă / nu e validă. Operator: AmSemnat.
+        Bază legală: Art. 6(1)(a) GDPR (consimțământul tău explicit
+        prin apăsarea butonului) și Art. 9(2)(a) pentru fotografia
+        din DG2 (transmisă doar pentru a-i calcula hash-ul — serverul
+        nu o decodează ca imagine).
       </>
     ),
   },

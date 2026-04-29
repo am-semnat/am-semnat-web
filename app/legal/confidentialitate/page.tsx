@@ -112,10 +112,16 @@ const sections = [
         codul, deci nu poate citi conținutul.
         <br />
         <br />
-        Pe server păstrăm: blob-ul cifrat, numele fișierului (în text
-        clar, ca să-l recunoască semnatarii), materialul de derivare a
-        cheii și metadate ale sesiunii (număr de semnatari, timpi,
-        stare). Toate se șterg automat după{" "}
+        Pe server păstrăm{" "}
+        <strong className="text-ink font-medium">
+          doar blob-ul cifrat
+        </strong>{" "}
+        — nici numele fișierului, nici conținutul lui nu sunt vizibile
+        pentru noi. Lângă el stocăm strict materialul criptografic
+        necesar protocolului (salt PBKDF2, cheia de document împachetată,
+        proof HMAC pentru codul de securitate) și metadate operaționale
+        ale sesiunii (număr de semnatari, câți au semnat, timpi, stare).
+        Toate se șterg automat după{" "}
         <strong className="text-ink font-medium">72 de ore</strong> —
         același interval e și fereastra în care semnatarii descarcă
         documentul finalizat. Creatorul poate șterge sesiunea
@@ -336,10 +342,11 @@ const sections = [
         nu părăsesc dispozitivul, deci nu avem nimic de arătat sau
         șters.
         <br />— <strong className="text-ink font-medium">§04</strong>{" "}
-        (multi-sign): blob cifrat + nume de fișier + metadate ale
-        sesiunii, șterse automat după 72 de ore; creatorul poate
-        șterge anticipat din aplicație, dacă mai are dispozitivul pe
-        care a creat sesiunea.
+        (multi-sign): blob cifrat + material criptografic + metadate
+        ale sesiunii (fără nume de fișier, fără conținut vizibil),
+        șterse automat după 72 de ore; creatorul poate șterge
+        anticipat din aplicație, dacă mai are dispozitivul pe care a
+        creat sesiunea.
         <br />— <strong className="text-ink font-medium">§05</strong>{" "}
         (verificare): nu păstrăm nimic, cererile nu sunt logate cu corp.
         <br />— <strong className="text-ink font-medium">§06</strong>{" "}

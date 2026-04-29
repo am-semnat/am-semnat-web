@@ -16,11 +16,23 @@ const sections = [
     title: "Cine suntem",
     body: (
       <>
-        AmSemnat e un proiect open source operat din București. Oferim
-        o aplicație mobilă și trei SDK-uri (Android, iOS, Expo) pentru
-        citirea și semnarea cu cartea electronică de identitate (CEI).
-        Site-ul amsemnat.ro și serviciile online (notar.amsemnat.ro)
-        sunt operate de echipa AmSemnat. În anumite fluxuri suntem{" "}
+        AmSemnat este operat de{" "}
+        <strong className="text-ink font-medium">
+          Crăcănău C. A. Andrei Persoană Fizică Autorizată
+        </strong>
+        , înregistrat la ONRC, CUI{" "}
+        <strong className="text-ink font-medium">5731660</strong>, cu sediul
+        în Bucureşti Sectorul 1, Strada Virgil Madgearu, Nr. 25-27, Bl.
+        Corp B, Etaj 1, Ap. 215. În sensul Regulamentului UE 2016/679
+        (GDPR), aceasta este entitatea care acționează ca operator de
+        date pentru fluxurile descrise mai jos. Oferim o aplicație
+        mobilă și trei SDK-uri open source (Android, iOS, Expo) pentru
+        citirea și semnarea cu cartea electronică de identitate (CEI),
+        plus serviciile online de la{" "}
+        <code className="text-[0.9em]">notar.amsemnat.ro</code>.
+        <br />
+        <br />
+        În anumite fluxuri suntem{" "}
         <strong className="text-ink font-medium">
           operator de date
         </strong>{" "}
@@ -30,7 +42,8 @@ const sections = [
         </strong>{" "}
         (intermediem datele tale către aplicația care a inițiat
         fluxul). Detaliile pentru fiecare flux sunt mai jos. Pentru
-        întrebări legate de această politică, scrie-ne la{" "}
+        întrebări legate de această politică sau pentru exercitarea
+        drepturilor tale GDPR, scrie-ne la{" "}
         <a
           href={`mailto:${CONTACT_EMAIL}`}
           className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"

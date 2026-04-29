@@ -39,12 +39,6 @@ const groups: Group[] = [
         highlight: true,
       },
       {
-        label: "Cod-sursă disponibil",
-        amsemnat: "Da, pe GitHub",
-        eidromania: "Nu (doar exemple, nu și SDK-ul)",
-        highlight: true,
-      },
-      {
         label: "Chei de licență · DRM",
         amsemnat: "Nu",
         eidromania: "Da",

@@ -89,8 +89,8 @@ console.log(identity.documentNumber);`,
 const roadmap = [
   {
     status: "în progres",
-    title: "Active Authentication",
-    body: "Complementar la passive auth - semnătură challenge-response cu cheia chip-ului.",
+    title: "AmSemnat.presentIdentity({can, pin2, challengeHash})",
+    body: "O operație one-tap care combină fluxul de citire cu o semnătură challenge-response într-o singură sesiune NFC.",
   },
   {
     status: "planificat",

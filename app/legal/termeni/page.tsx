@@ -228,7 +228,7 @@ export default function TermeniPage() {
         Termeni de <em className="font-light italic">utilizare</em>.
       </h1>
       <p className="text-ink-muted mt-6 max-w-[55ch] text-lg leading-relaxed">
-        Pe scurt: SDK-urile sunt Apache 2.0, aplicația e în acces anticipat și e
+        Pe scurt: SDK-urile sunt Apache 2.0, aplicația e în early access și e
         oferită ca atare, nu suntem un Trust Service Provider eIDAS. Detalii mai
         jos.
       </p>

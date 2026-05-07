@@ -23,9 +23,9 @@ const blocks: Block[] = [
     title: "De ce scriem despre asta",
     body: (
       <>
-        AmSemnat are de a face cu identitatea și semnătura - două dintre componentele
-        critice pentru încredere într-un produs digital. Codul care le
-        manipulează merită să fie auditabil. De aceea suntem deschiși despre
+        AmSemnat are de a face cu identitatea și semnătura - două dintre
+        componentele critice pentru încredere într-un produs digital. Codul care
+        le manipulează merită să fie auditabil. De aceea suntem deschiși despre
         cod, dar și despre{" "}
         <em className="text-ink font-display italic">cum producem codul</em>. Nu
         ascundem AI-ul, nu îl etichetăm ca selling point. Îl prezentăm ca pe
@@ -43,8 +43,8 @@ const blocks: Block[] = [
         documentație, paritate cross-platform între SDK-urile Android, iOS și
         Expo. Concret - Claude Code ca partener de pair programming, scriind cod
         sub direcția unui developer și cu fiecare modificare verificată înainte
-        să intre pe ramura principală. Pentru un proiect care trebuie să livreze
-        același API în trei limbaje (Kotlin, Swift, TypeScript), automatizarea e
+        să intre pe master. Pentru un proiect care trebuie să livreze același
+        API în trei limbaje (Kotlin, Swift, TypeScript), automatizarea e
         esențială pentru menținerea unui API consistent în timp.
       </>
     ),
@@ -54,7 +54,7 @@ const blocks: Block[] = [
     title: "Ce stă pe umerii unui om",
     body: (
       <>
-        Aceasta e secțiunea cea mai importantă a paginii.
+        Asta e secțiunea cea mai importantă a paginii.
         <ul className="mt-5 space-y-3 [&>li]:relative [&>li]:pl-6">
           <li className="before:bg-cobalt-500 before:absolute before:top-2.5 before:left-0 before:h-1 before:w-3">
             <strong className="text-ink font-medium">
@@ -144,7 +144,7 @@ const blocks: Block[] = [
               </strong>{" "}
               Ultimul pas înainte de tag-uri și publicare. Aplicația
               consumatoare e compilată și rulată cu artifact-ul exact care va
-              merge în registru. Acest pas a prins regresiuni reale care altfel
+              merge în registru. Pasul ăsta a prins regresiuni reale care altfel
               ar fi ajuns la utilizatori.
             </span>
           </li>
@@ -167,7 +167,7 @@ const blocks: Block[] = [
           semnătura PAdES - au teste dedicate cu vectori cunoscuți și review
           uman pentru fiecare modificare. Nu ne ascundem după AI dacă apare un
           bug. Dacă găsești unul, deschide un issue pe GitHub și îl rezolvăm pe
-          ramura principală cât de repede putem.
+          master cât de repede putem.
         </p>
       </>
     ),
@@ -208,8 +208,8 @@ export default function CumConstruimPage() {
         <p className="text-ink-muted mt-7 max-w-[58ch] text-lg leading-relaxed md:text-xl">
           AmSemnat e construit cu Claude Code ca partener de pair programming.
           Asta înseamnă cod scris mai rapid și paritate cross-platform între
-          SDK-uri. Nu înseamnă că lăsăm deciziile critice pe seama AI-ului. Uite mai exact unde intervine
-          AI-ul în proces și unde rămâne factorul uman:
+          SDK-uri. Nu înseamnă că lăsăm deciziile critice pe seama AI-ului. Uite
+          mai exact unde intervine AI-ul în proces și unde rămâne factorul uman:
         </p>
       </Container>
 
@@ -264,10 +264,10 @@ export default function CumConstruimPage() {
               </div>
               <p className="text-ink-muted mt-4 max-w-[44ch] text-[14px] leading-relaxed">
                 AmSemnat nu e o aplicație generată automat. În spate e un autor,
-                care își asumă commit-urile, ia deciziile și răspunde de bug-uri.
-                AI-ul e doar un instrument care accelerează scrierea codului.
-                Arhitectura, securitatea și release-urile rămân ceea ce au fost
-                mereu în software bun: muncă umană atentă.
+                care își asumă commit-urile, ia deciziile și răspunde de
+                bug-uri. AI-ul e doar un instrument care accelerează scrierea
+                codului. Arhitectura, securitatea și release-urile rămân ceea ce
+                au fost mereu în software: muncă umană atentă.
               </p>
             </div>
           </aside>

@@ -70,26 +70,55 @@ const sections = [
     ),
   },
   {
-    // TEMPORARY — remove this section once paid tier launches under SRL.
-    // Numbered with "—" so removal doesn't force a renumber of everything after.
-    index: "—",
-    title: "Aplicația în early access (beta)",
+    index: "04",
+    title: "Aplicația și serviciile în early access (beta)",
     body: (
       <>
-        Aplicația mobilă AmSemnat se află în{" "}
+        Aplicația mobilă AmSemnat și serviciile asociate (sesiuni de semnare
+        în grup) se află în{" "}
         <strong className="text-ink font-medium">early access</strong>.
-        Funcționalitățile pot avea defecte, comportamentul se poate schimba fără
-        preaviz, iar disponibilitatea serviciilor de backend (sesiuni de semnare
-        în grup, link-uri partajate) nu este garantată. Folosește aplicația
-        pentru testare și pentru documente unde poți tolera o eventuală pierdere
-        sau eroare. Documentele critice - contracte semnificative, acte
-        notariale, înscrisuri cu termen legal - semnează-le, în această
-        perioadă, printr-un canal stabilit (notar, QTSP autorizat eIDAS).
+        Funcționalitățile pot avea defecte, comportamentul se poate schimba
+        fără preaviz, iar disponibilitatea serviciilor de backend nu este
+        garantată. În această perioadă toate funcționalitățile - inclusiv
+        sesiunile de semnare în grup - sunt oferite gratuit; ne rezervăm
+        dreptul de a introduce planuri cu plată pentru anumite funcționalități
+        după ieșirea din beta, cu notificare prealabilă rezonabilă.
+        <br />
+        <br />
+        Folosește aplicația pentru testare și pentru documente unde poți
+        tolera o eventuală pierdere sau eroare. Documentele critice -
+        contracte semnificative, acte notariale, înscrisuri cu termen legal -
+        semnează-le, în această perioadă, printr-un canal stabilit (notar,
+        QTSP autorizat eIDAS).
       </>
     ),
   },
   {
-    index: "04",
+    index: "05",
+    title: "Sesiuni de semnare în grup - termenul de 72 de ore",
+    body: (
+      <>
+        Indiferent de statutul beta de mai sus, sesiunile de semnare în grup
+        au prin design o durată maximă de{" "}
+        <strong className="text-ink font-medium">72 de ore</strong> de la
+        creare. La expirare, sesiunea, blob-ul cifrat al documentului și
+        materialul criptografic asociat sunt șterse automat de pe server și
+        nu mai pot fi recuperate, indiferent de câte semnături au intrat
+        până în acel moment.
+        <br />
+        <br />
+        E o proprietate deliberată a designului - minimizare de date,
+        end-to-end encryption - nu un defect. Responsabilitatea de a
+        coordona semnatarii astfel încât toți să finalizeze în acest interval
+        revine creatorului sesiunii; pentru documente cu termen strict,
+        planifică sesiunea cu o marjă față de termenele tale și verifică
+        progresul. Pierderea unei sesiuni prin expirare nu constituie defect
+        al serviciului și nu dă naștere la răspundere conform §06.
+      </>
+    ),
+  },
+  {
+    index: "06",
     title: "Garanții și răspundere",
     body: (
       <>
@@ -105,9 +134,9 @@ const sections = [
         date, costuri de înlocuire a serviciului, sau orice alte daune
         consecvențiale rezultate din utilizarea sau imposibilitatea utilizării
         aplicației. Răspunderea noastră agregată cumulată, pentru toate cauzele
-        luate împreună, este limitată la suma plătită de tine pentru serviciu în
-        ultimele 12 luni - care, pentru utilizatorii planului gratuit, este
-        zero.
+        luate împreună, este limitată la suma plătită de tine pentru serviciu
+        în ultimele 12 luni. În prezent toate funcționalitățile sunt
+        gratuite, deci limita este zero.
         <br />
         <br />
         Excepție: limitările de mai sus nu se aplică în cazurile în care legea
@@ -119,7 +148,7 @@ const sections = [
     ),
   },
   {
-    index: "05",
+    index: "07",
     title: "Nu suntem un Trust Service Provider eIDAS",
     body: (
       <>
@@ -134,7 +163,7 @@ const sections = [
     ),
   },
   {
-    index: "06",
+    index: "08",
     title: "Validitate juridică",
     body: (
       <>
@@ -153,7 +182,7 @@ const sections = [
     ),
   },
   {
-    index: "07",
+    index: "09",
     title: "Obligațiile utilizatorului",
     body: (
       <>
@@ -175,7 +204,7 @@ const sections = [
     ),
   },
   {
-    index: "08",
+    index: "10",
     title: "Lege aplicabilă și jurisdicție",
     body: (
       <>
@@ -190,7 +219,7 @@ const sections = [
     ),
   },
   {
-    index: "09",
+    index: "11",
     title: "Modificări",
     body: (
       <>
@@ -198,12 +227,12 @@ const sections = [
         dashboard-ul cu cont, planurile cu plată) sau când contextul legal o
         cere. Vom anunța modificările prin actualizarea acestei pagini și,
         pentru utilizatorii aplicației, prin re-prezentarea ecranului de
-        acceptare la următoarea deschidere. Versiunea curentă: aprilie 2026.
+        acceptare la următoarea deschidere. Versiunea curentă: mai 2026.
       </>
     ),
   },
   {
-    index: "10",
+    index: "12",
     title: "Contact",
     body: (
       <>
@@ -236,7 +265,7 @@ export default function TermeniPage() {
       <div className="border-rule-strong divide-rule mt-16 divide-y border-t md:mt-20">
         {sections.map((s) => (
           <section
-            key={s.index === "—" ? `dash-${s.title}` : s.index}
+            key={s.index}
             className="grid grid-cols-1 gap-x-10 gap-y-3 py-8 md:grid-cols-12 md:py-10"
           >
             <div className="md:col-span-3">

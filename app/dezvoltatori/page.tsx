@@ -90,7 +90,7 @@ const roadmap = [
   {
     status: "în progres",
     title: "AmSemnat.presentIdentity({can, pin2, challengeHash})",
-    body: "O operație one-tap care combină fluxul de citire cu o semnătură challenge-response într-o singură sesiune NFC.",
+    body: "O operație one-tap care combină citirea identității cu o semnătură challenge-response într-o singură sesiune NFC. Plus un export nou în @amsemnat/verifier pentru validarea cripto pe backend. Calea recomandată pentru onboarding KYC pe CEI: tap-ul înlocuiește pasul foto+selfie de buletin; pașii AML (liveness, face-match, screening PEP) rămân în sarcina ta.",
   },
   {
     status: "planificat",

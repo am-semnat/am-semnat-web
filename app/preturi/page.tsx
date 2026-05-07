@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "Prețuri",
   description:
-    "Personal - gratuit pentru totdeauna. SDK-uri Apache 2.0 - fără chei de licență. Echipe - plan dedicat pentru sesiuni de semnare coordonate.",
+    "Personal - gratuit pentru totdeauna. SDK-uri Apache 2.0 - fără chei de licență. Sesiuni de semnare în grup gratuite în early access cât timp produsul e în beta.",
 };
 
 type PriceBlock = {
@@ -33,28 +33,31 @@ const blocks: PriceBlock[] = [
     index: "02 / 03",
     label: "Aplicație · Personal",
     price: "Gratuit",
-    body: "Citește, verifică și semnează PDF-uri cu CEI-ul tău. Autentificare OIDC. Pentru totdeauna, fără limite per dispozitiv, fără KYC, fără cont obligatoriu.",
+    body: "Citește, verifică și semnează PDF-uri cu CEI-ul tău. Pentru totdeauna, fără limite per dispozitiv, fără KYC, fără cont obligatoriu.",
     meta: "iOS · Android",
     badge: "în curând",
   },
   {
     index: "03 / 03",
     label: "Aplicație · Echipe",
-    price: "La cerere",
+    price: "Gratuit",
     body: (
       <>
-        Sesiuni de semnare în grup, audit și administrare. Pricing-ul e funcție
-        de mărime și folosință -{" "}
+        Sesiuni de semnare în grup pe iOS și Android - gratuit pentru toți
+        utilizatorii cât timp produsul e în beta. Planul Echipe cu
+        administrare, audit și support prioritar sosește când ieșim din beta.
+        Pentru implementare la scară,{" "}
         <Link
           href="/contact"
           className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
         >
           contactați-ne
-        </Link>{" "}
-        pentru detalii când ești gata să integrezi.
+        </Link>
+        .
       </>
     ),
-    meta: "iOS · Android · plan dedicat",
+    meta: "iOS · Android · în early access",
+    badge: "în beta",
   },
 ];
 
@@ -64,13 +67,14 @@ export default function PreturiPage() {
       <Container className="pt-24 md:pt-32">
         <Eyebrow index="P">Prețuri</Eyebrow>
         <h1 className="font-display text-ink mt-7 max-w-[20ch] text-[clamp(2.5rem,4.5vw+1rem,5rem)] leading-[0.98] tracking-tight">
-          Gratuit pentru tine. <em className="font-light italic">Plătit</em>{" "}
+          Gratuit pentru tine. <em className="font-light italic">În beta</em>{" "}
           pentru echipe.
         </h1>
         <p className="text-ink-muted mt-6 max-w-[58ch] text-lg leading-relaxed md:text-xl">
           App-ul personal e gratuit pentru totdeauna. SDK-urile sunt Apache 2.0
-          - fără chei de licență, fără factură anuală. Echipele care semnează în
-          grup au un plan dedicat.
+          - fără chei de licență, fără factură anuală. Sesiunile de semnare în
+          grup sunt gratuite în early access; planul Echipe cu administrare
+          avansată sosește când produsul iese din beta.
         </p>
       </Container>
 

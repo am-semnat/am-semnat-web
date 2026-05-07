@@ -64,7 +64,7 @@ const groups: Group[] = [
         label: "Sesiuni multi-semnatar",
         amsemnat: (
           <>
-            Da · <em className="font-display italic">Planul Echipe</em>
+            Da · <em className="font-display italic">gratuit în early access</em>
           </>
         ),
         eidromania: "Nu",

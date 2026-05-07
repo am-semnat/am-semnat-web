@@ -27,8 +27,8 @@ export default function Home() {
 
               <p className="text-ink-muted mt-8 max-w-[46ch] text-lg leading-relaxed md:text-xl">
                 Aplicație gratuită pentru semnare individuală, SDK-uri Apache
-                2.0 pentru dezvoltatori, plan dedicat pentru echipe. Codul e
-                open. Semnătura e a ta.
+                2.0 pentru dezvoltatori, semnare în grup gratuită în early
+                access. Codul e open. Semnătura e a ta.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-3">
@@ -84,7 +84,7 @@ export default function Home() {
             AmSemnat le face.
           </>
         }
-        intro="Open source pentru toți, gratuit pentru tine, plan dedicat pentru echipe. Citire, verificare, semnare - pe Android, iOS și Expo, fără chei de licență, fără factură anuală."
+        intro="Open source pentru toți, gratuit pentru tine, semnare în grup gratuită în early access. Citire, verificare, semnare - pe Android, iOS și Expo, fără chei de licență, fără factură anuală."
       >
         <div className="bg-rule-strong border-rule-strong grid grid-cols-1 gap-px border-y md:grid-cols-3">
           <FeatureCard
@@ -113,7 +113,7 @@ export default function Home() {
                 Pentru echipe: sesiuni <em className="italic">în grup</em>.
               </>
             }
-            body="Trimite un link clientului. Fiecare semnatar își aduce propriul CEI. Documentul se închide automat când toți au semnat. Disponibil în planul Echipe."
+            body="Trimite un link clientului. Fiecare semnatar își aduce propriul CEI. Documentul se închide automat când toți au semnat. Gratuit în early access."
           />
         </div>
       </Section>
@@ -182,7 +182,7 @@ export default function Home() {
                   </div>
                   <p className="text-ink-muted mt-1 text-[13px] leading-relaxed">
                     Workflow public pentru testarea unei modificări nepublicate
-                    înainte de release. Nu există magie privată.
+                    înainte de release.
                   </p>
                 </li>
               </ul>

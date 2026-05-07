@@ -13,7 +13,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Aplicația AmSemnat",
   description:
-    "Aplicația mobilă AmSemnat - semnezi PDF-uri cu CEI-ul tău, gratuit pentru semnare individuală. Sesiuni de semnare în grup în planul Echipe. OIDC, fără KYC, local-first.",
+    "Aplicația mobilă AmSemnat - semnezi PDF-uri cu CEI-ul tău, gratuit pentru semnare individuală. Sesiuni de semnare în grup gratuite în early access. Local-first, fără KYC.",
 };
 
 type FaqEntry = FaqItem & { plainAnswer: string };
@@ -53,17 +53,17 @@ const faq: FaqEntry[] = [
   {
     question: "E gratuit?",
     plainAnswer:
-      "Da, pentru semnare individuală - pentru totdeauna. Aplicația mobilă, autentificarea OIDC și SDK-urile native sunt gratuite, fără limite per dispozitiv, fără KYC, fără cont obligatoriu. Sesiunile de semnare în grup sunt parte din planul Echipe - un plan dedicat pentru organizații, cu pricing per echipă.",
+      "Da. Aplicația mobilă și SDK-urile native sunt gratuite pentru totdeauna - fără limite per dispozitiv, fără KYC, fără cont obligatoriu. Sesiunile de semnare în grup sunt și ele gratuite cât timp produsul e în beta; planul Echipe cu administrare avansată sosește când ieșim din early access.",
     answer: (
       <>
-        Da, pentru semnare individuală - pentru totdeauna. Aplicația
-        mobilă, autentificarea OIDC și SDK-urile native sunt gratuite,
-        fără limite per dispozitiv, fără KYC, fără cont obligatoriu.{" "}
+        Da. Aplicația mobilă și SDK-urile native sunt gratuite pentru
+        totdeauna - fără limite per dispozitiv, fără KYC, fără cont
+        obligatoriu.{" "}
         <strong className="text-ink font-medium">
           Sesiunile de semnare în grup
         </strong>{" "}
-        sunt parte din planul Echipe - un plan dedicat pentru
-        organizații, cu pricing per echipă.{" "}
+        sunt și ele gratuite cât timp produsul e în beta; planul Echipe
+        cu administrare avansată sosește când ieșim din early access.{" "}
         <Link
           href="/preturi"
           className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
@@ -207,8 +207,8 @@ export default function AplicatiePage() {
               <p className="text-ink-muted mt-7 max-w-[50ch] text-lg leading-relaxed md:text-xl">
                 Aplicația AmSemnat - pentru iOS și Android. Gratuit
                 pentru semnare individuală, pentru totdeauna. Sesiuni
-                de semnare în grup în planul Echipe. Local-first, fără
-                KYC.
+                de semnare în grup gratuite în early access.
+                Local-first, fără KYC.
               </p>
               <div className="mt-10">
                 <AppDownloadCTA />
@@ -220,7 +220,7 @@ export default function AplicatiePage() {
                     Cont
                   </dt>
                   <dd className="text-ink mt-1.5 text-[13px] font-medium">
-                    Opțional · OIDC
+                    Nu e necesar
                   </dd>
                 </div>
                 <div className="border-ink/15 border-t pt-3">
@@ -297,8 +297,8 @@ export default function AplicatiePage() {
             <p className="mt-5">
               Aplicația nu salvează datele citite între sesiuni decât
               dacă alegi explicit să le păstrezi. Pentru cele mai multe
-              fluxuri (semnare, partajare, autentificare OIDC), datele
-              sunt în memorie cât timp e activă sesiunea, apoi dispar.
+              fluxuri (semnare, partajare), datele sunt în memorie cât
+              timp e activă sesiunea, apoi dispar.
             </p>
           </div>
           <aside className="md:col-span-5">
@@ -323,40 +323,14 @@ export default function AplicatiePage() {
 
       <Section
         index="03"
-        label="OIDC autentificare"
-        title={
-          <>
-            Logare cu CEI-ul,{" "}
-            <em className="font-light italic">direct</em> în aplicația
-            ta.
-          </>
-        }
-        intro="Pentru servicii care vor să verifice o identitate eID-confirmată fără să stocheze datele utilizatorului - AmSemnat poate funcționa ca provider OIDC. Utilizatorul citește o dată CEI-ul în aplicația noastră, apoi se autentifică în aplicația ta cu un click."
-        bordered
-      >
-        <p className="text-ink-muted max-w-[60ch] text-[15px] leading-relaxed md:text-[16px]">
-          Detalii de integrare în SDK-uri sau în documentația dedicată
-          (planificată). Pentru proof-of-concept, contactează-ne pe{" "}
-          <Link
-            href="/contact"
-            className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
-          >
-            pagina de contact
-          </Link>
-          .
-        </p>
-      </Section>
-
-      <Section
-        index="04"
-        label="Pentru echipe · Planul Echipe"
+        label="Pentru echipe · Semnare în grup"
         title={
           <>
             Mai mulți semnatari, un singur{" "}
             <em className="font-light italic">flux</em>.
           </>
         }
-        intro="Singura aplicație din România care semnează PDF-uri cu CEI-ul în flux multi-semnatar. Setezi numărul de semnatari, distribui un link de sesiune plus un cod de securitate, fiecare semnează cu propriul CEI. Disponibil în planul Echipe."
+        intro="Singura aplicație din România care semnează PDF-uri cu CEI-ul în flux multi-semnatar. Setezi numărul de semnatari, distribui un link de sesiune plus un cod de securitate, fiecare semnează cu propriul CEI. Gratuit pentru toți utilizatorii cât timp produsul e în beta."
         bordered
       >
         <ol className="bg-rule-strong border-rule-strong grid grid-cols-1 gap-px border-y md:grid-cols-2 lg:grid-cols-4">
@@ -378,19 +352,20 @@ export default function AplicatiePage() {
           ))}
         </ol>
         <p className="text-ink-faint mt-8 max-w-[60ch] font-mono text-[11px] tracking-[0.16em] uppercase">
-          Notă · Sesiunile multi-semnatar cu dashboard administrat sosesc
-          în versiunea web (planificat). Modul mobil-only cu link-uri
-          partajate e disponibil de la lansare.
+          Notă · Sesiunile cu termen 72h sunt o proprietate de design
+          (E2EE, minimizare de date) - planifică cu marjă față de
+          termenele tale. Dashboard-ul administrat sosește în versiunea
+          web.
         </p>
         <div className="mt-10">
           <Button href="/preturi" arrow>
-            Vezi planul Echipe
+            Vezi prețurile
           </Button>
         </div>
       </Section>
 
       <Section
-        index="05"
+        index="04"
         label="Confidențialitate"
         title={
           <>
@@ -432,7 +407,7 @@ export default function AplicatiePage() {
       </Section>
 
       <Section
-        index="06"
+        index="05"
         label="Întrebări frecvente"
         title={<>Cinci întrebări care apar mereu.</>}
         bordered

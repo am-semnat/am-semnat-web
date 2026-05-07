@@ -32,16 +32,11 @@ const sections = [
         <code className="text-[0.9em]">notar.amsemnat.ro</code>.
         <br />
         <br />
-        În anumite fluxuri suntem{" "}
+        Pentru toate fluxurile descrise mai jos suntem{" "}
         <strong className="text-ink font-medium">
           operator de date
         </strong>{" "}
-        (decidem ce și de ce prelucrăm), în altele suntem{" "}
-        <strong className="text-ink font-medium">
-          persoană împuternicită
-        </strong>{" "}
-        (intermediem datele tale către aplicația care a inițiat
-        fluxul). Detaliile pentru fiecare flux sunt mai jos. Pentru
+        în sensul GDPR — noi decidem ce și de ce prelucrăm. Pentru
         întrebări legate de această politică sau pentru exercitarea
         drepturilor tale GDPR, scrie-ne la{" "}
         <a
@@ -190,66 +185,6 @@ const sections = [
   },
   {
     index: "06",
-    id: "autentificare-oidc",
-    title: "Autentificare OIDC pentru aplicații terțe",
-    body: (
-      <>
-        Când o altă aplicație îți cere să te autentifici cu CEI prin
-        AmSemnat (protocol OpenID Connect), rolurile sunt diferite:
-        aplicația terță este{" "}
-        <strong className="text-ink font-medium">
-          operatorul de date
-        </strong>{" "}
-        (a inițiat fluxul, a definit ce afirmații îi trebuie despre
-        tine), iar AmSemnat este{" "}
-        <strong className="text-ink font-medium">
-          persoană împuternicită
-        </strong>{" "}
-        (intermediem citirea cardului și transmiterea datelor către
-        ea).
-        <br />
-        <br />
-        Pentru OIDC trimitem la serverul nostru{" "}
-        <strong className="text-ink font-medium">
-          materialul criptografic plus datele de identitate
-        </strong>{" "}
-        (nume, prenume, CNP, data nașterii, cetățenie, sex,
-        fotografie, după caz) pentru ca aplicația terță să primească
-        afirmațiile pe care le-a cerut. Datele personale rămân în
-        cache-ul serverului maxim{" "}
-        <strong className="text-ink font-medium">10 minute</strong>{" "}
-        (durata unei interacțiuni OIDC), apoi sunt șterse automat;
-        după acest interval, dacă aplicația terță îți cere din nou
-        datele, va trebui să te reautentifici cu cardul. Artefactele
-        OIDC mai lungi (sesiunea, grant-urile, refresh tokens - TTL
-        maxim 30 de zile, conform protocolului) conțin doar
-        identificatorul{" "}
-        <code className="text-[0.9em]">sub</code>, nu și PII-ul.
-        <br />
-        <br />
-        Nu menținem o bază de date de utilizatori -{" "}
-        <code className="text-[0.9em]">sub</code> e calculat
-        determinist din CNP-ul tău printr-o funcție criptografică cu
-        cheie secretă (HMAC-SHA256), nu e stocat ca atare nicăieri.
-        La o reautentificare cu aceeași carte,{" "}
-        <code className="text-[0.9em]">sub</code> se recalculează și
-        e identic cu cel anterior, ceea ce permite aplicației terțe
-        să te recunoască.
-        <br />
-        <br />
-        Introducerea PIN-ului 1 pe ecranul de autentificare constituie
-        consimțământ explicit pentru transmiterea datelor către
-        aplicația care a inițiat fluxul. Bază legală: Art. 6(1)(b)
-        GDPR (executarea contractului dintre tine și aplicația terță)
-        și Art. 9(2)(a) (consimțământ explicit prin PIN) pentru
-        datele biometrice. Dacă vrei să afli ce face aplicația terță
-        cu datele după ce le primește, citește-i propria politică de
-        confidențialitate - pentru acea fază rolul nostru se încheie.
-      </>
-    ),
-  },
-  {
-    index: "07",
     id: "biometrice",
     title: "Date biometrice și CNP (Art. 9 GDPR, Legea 190/2018)",
     body: (
@@ -259,11 +194,11 @@ const sections = [
         Legea 190/2018. Le tratăm ca atare:{" "}
         <strong className="text-ink font-medium">
           niciuna dintre operațiunile noastre online (verificare
-          opțională, OIDC) nu se întâmplă fără un gest deliberat al
-          tău
+          opțională a cardului) nu se întâmplă fără un gest deliberat
+          al tău
         </strong>{" "}
-        - apăsarea butonului „Verifică”, respectiv introducerea
-        PIN-ului. Acel gest e baza legală sub Art. 9(2)(a)
+        - apăsarea butonului „Verifică”. Acel gest e baza legală sub
+        Art. 9(2)(a)
         (consimțământ explicit). Poți retrage consimțământul oricând
         scriindu-ne la {CONTACT_EMAIL}; pentru fluxurile descrise
         mai sus, retragerea înseamnă efectiv să nu inițiezi fluxul -
@@ -273,7 +208,7 @@ const sections = [
     ),
   },
   {
-    index: "08",
+    index: "07",
     id: "sdk",
     title: "SDK-urile open source",
     body: (
@@ -288,7 +223,7 @@ const sections = [
     ),
   },
   {
-    index: "09",
+    index: "08",
     id: "cookies",
     title: "Cookie-uri",
     body: (
@@ -301,7 +236,7 @@ const sections = [
     ),
   },
   {
-    index: "10",
+    index: "09",
     id: "subprocesatori",
     title: "Subprocesatori",
     body: (
@@ -314,10 +249,10 @@ const sections = [
         — <strong className="text-ink font-medium">Railway Corp.</strong>{" "}
         (SUA) — hostează serviciile online de la{" "}
         <code className="text-[0.9em]">notar.amsemnat.ro</code>:
-        endpoint-urile pentru verificarea opțională a cardului,
-        autentificarea OIDC și sesiunile de semnare în grup, plus
-        baza de date PostgreSQL care stochează metadatele și blob-urile
-        cifrate ale acestor fluxuri.
+        endpoint-urile pentru verificarea opțională a cardului și
+        sesiunile de semnare în grup, plus baza de date PostgreSQL
+        care stochează metadatele și blob-urile cifrate ale acestor
+        fluxuri.
         <br />— <strong className="text-ink font-medium">Vercel Inc.</strong>{" "}
         (SUA) — hostează site-ul amsemnat.ro și deservește paginile lui
         statice. Furnizează și Vercel Web Analytics (statistici
@@ -334,7 +269,7 @@ const sections = [
     ),
   },
   {
-    index: "11",
+    index: "10",
     id: "drepturi",
     title: "Drepturile tale (GDPR)",
     body: (
@@ -362,17 +297,11 @@ const sections = [
         creat sesiunea.
         <br />— <strong className="text-ink font-medium">§05</strong>{" "}
         (verificare): nu păstrăm nimic, cererile nu sunt logate cu corp.
-        <br />— <strong className="text-ink font-medium">§06</strong>{" "}
-        (OIDC): PII în memorie maxim 10 minute, apoi șters automat. Nu
-        menținem un tabel CNP→<code className="text-[0.9em]">sub</code>{" "}
-        — <code className="text-[0.9em]">sub</code>-ul e o valoare
-        reproductibilă din același card, nu o evidență a unei vizite
-        anterioare.
       </>
     ),
   },
   {
-    index: "12",
+    index: "11",
     id: "contact",
     title: "Contact și ANSPDCP",
     body: (
@@ -400,7 +329,7 @@ const sections = [
     ),
   },
   {
-    index: "13",
+    index: "12",
     id: "modificari",
     title: "Modificări",
     body: (
@@ -424,9 +353,9 @@ export default function ConfidentialitatePage() {
       <p className="text-ink-muted mt-6 max-w-[55ch] text-lg leading-relaxed">
         Pe scurt: site-ul nu te urmărește, SDK-urile nu trimit
         telemetrie, aplicația rulează local pentru fluxurile
-        principale. Pentru verificarea opțională a cardului și pentru
-        autentificarea OIDC trimitem date la serverul nostru - fiecare
-        flux e descris în detaliu mai jos.
+        principale. Pentru verificarea opțională a cardului trimitem
+        date la serverul nostru - fiecare flux e descris în detaliu
+        mai jos.
       </p>
 
       <div className="border-rule-strong divide-rule mt-16 divide-y border-t md:mt-20">

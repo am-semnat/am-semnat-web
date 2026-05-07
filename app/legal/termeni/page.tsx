@@ -200,6 +200,12 @@ const sections = [
         terți, inclusiv costurile rezonabile de apărare juridică, rezultată din
         utilizarea aplicației de către tine cu încălcarea acestor termeni sau a
         legii aplicabile.
+        <br />
+        <br />
+        Aplicația nu e destinată minorilor sub 16 ani. Folosirea de către
+        minori cu vârsta între 14 și 18 ani se face sub supravegherea și
+        responsabilitatea titularului autorității părintești, care răspunde
+        pentru respectarea acestor termeni.
       </>
     ),
   },
@@ -233,6 +239,25 @@ const sections = [
   },
   {
     index: "12",
+    title: "Clauze diverse",
+    body: (
+      <>
+        Dacă oricare dintre clauzele acestor termeni este declarată nulă sau
+        inaplicabilă de o instanță competentă, restul clauzelor rămân în
+        vigoare și produc efecte între părți. Acești termeni, împreună cu
+        Politica de confidențialitate, constituie acordul integral între tine
+        și AmSemnat cu privire la utilizarea aplicației, a serviciilor
+        asociate și a SDK-urilor, și înlocuiesc orice înțelegeri anterioare
+        având același obiect. Drepturile și obligațiile tale rezultate din
+        acest acord nu pot fi cesionate fără acordul nostru scris prealabil.
+        Toleranța noastră față de o eventuală nerespectare a termenilor nu
+        echivalează cu renunțarea la drepturile noastre pentru încălcări
+        ulterioare.
+      </>
+    ),
+  },
+  {
+    index: "13",
     title: "Contact",
     body: (
       <>

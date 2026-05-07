@@ -120,16 +120,17 @@ const sections = [
         codul, deci nu poate citi conținutul.
         <br />
         <br />
-        Pe server păstrăm{" "}
+        Documentul cifrat e stocat pe un{" "}
         <strong className="text-ink font-medium">
-          doar blob-ul cifrat
+          bucket de obiecte cu jurisdicție EU
         </strong>{" "}
         — nici numele fișierului, nici conținutul lui nu sunt vizibile
-        pentru noi. Lângă el stocăm strict materialul criptografic
-        necesar protocolului (salt PBKDF2, cheia de document împachetată,
-        proof HMAC pentru codul de securitate) și metadate operaționale
-        ale sesiunii (număr de semnatari, câți au semnat, timpi, stare).
-        Toate se șterg automat după{" "}
+        pentru noi. Separat, într-o bază de date PostgreSQL, stocăm
+        strict materialul criptografic necesar protocolului (salt
+        PBKDF2, cheia de document împachetată, proof HMAC pentru codul
+        de securitate) și metadate operaționale ale sesiunii (număr de
+        semnatari, câți au semnat, timpi, stare). Detaliile despre
+        furnizori sunt în §09. Toate se șterg automat după{" "}
         <strong className="text-ink font-medium">72 de ore</strong> —
         același interval e și fereastra în care semnatarii descarcă
         documentul finalizat. Creatorul poate șterge sesiunea
@@ -251,8 +252,16 @@ const sections = [
         <code className="text-[0.9em]">notar.amsemnat.ro</code>:
         endpoint-urile pentru verificarea opțională a cardului și
         sesiunile de semnare în grup, plus baza de date PostgreSQL
-        care stochează metadatele și blob-urile cifrate ale acestor
-        fluxuri.
+        care stochează metadatele sesiunilor și materialul
+        criptografic asociat (salt PBKDF2, cheia de document
+        împachetată, proof HMAC).
+        <br />— <strong className="text-ink font-medium">Cloudflare, Inc.</strong>{" "}
+        (SUA) — stochează blob-urile cifrate ale documentelor din
+        sesiunile de semnare în grup prin serviciul R2 Object Storage.
+        Bucket-ul e configurat cu{" "}
+        <strong className="text-ink font-medium">jurisdicție EU</strong>,
+        deci documentele cifrate rămân fizic pe servere din Uniunea
+        Europeană.
         <br />— <strong className="text-ink font-medium">Vercel Inc.</strong>{" "}
         (SUA) — hostează site-ul amsemnat.ro și deservește paginile lui
         statice. Furnizează și Vercel Web Analytics (statistici
@@ -260,9 +269,9 @@ const sections = [
         prevenție abuz).
         <br />
         <br />
-        Pentru transferurile către SUA (Railway, Vercel), aceștia
-        operează sub clauze contractuale standard (SCC) și/sau cadrul
-        EU-US Data Privacy Framework, conform Art. 46 GDPR. Vom
+        Pentru transferurile către SUA (Railway, Cloudflare, Vercel),
+        aceștia operează sub clauze contractuale standard (SCC) și/sau
+        cadrul EU-US Data Privacy Framework, conform Art. 46 GDPR. Vom
         actualiza această listă când schimbăm furnizori sau adăugăm
         alții.
       </>
@@ -279,7 +288,9 @@ const sections = [
         rectificare (Art. 16), ștergere (Art. 17), restricționarea
         prelucrării (Art. 18), portabilitate (Art. 20), opoziție
         (Art. 21), retragerea consimțământului în orice moment
-        (Art. 7(3)). Cere oricare dintre acestea la {CONTACT_EMAIL}.
+        (Art. 7(3)). Nu luăm decizii automate cu efecte juridice
+        asupra ta și nu facem profilare în sensul Art. 22 GDPR. Cere
+        oricare dintre drepturile de mai sus la {CONTACT_EMAIL}.
         Răspundem în termen de o lună (cu posibilă prelungire pentru
         cereri complexe, conform GDPR). În practică, pentru fluxurile
         descrise mai sus datele identificabile sunt minime sau
@@ -302,6 +313,31 @@ const sections = [
   },
   {
     index: "11",
+    id: "minori",
+    title: "Minori",
+    body: (
+      <>
+        Serviciile AmSemnat nu sunt destinate copiilor sub 16 ani.
+        Nu colectăm intenționat date personale de la minori sub
+        această vârstă fără consimțământul titularului răspunderii
+        părintești, conform Art. 8 GDPR. Cartea electronică de
+        identitate se emite în România începând cu vârsta de 14 ani;
+        pentru utilizatori între 14 și 16 ani recomandăm folosirea
+        aplicației sub supravegherea părintelui sau tutorelui legal.
+        Dacă afli că un minor sub 16 ani ne-a furnizat date fără
+        consimțământul părintesc necesar, scrie-ne la{" "}
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="text-ink hover:text-cobalt-600 underline decoration-1 underline-offset-4 transition-colors"
+        >
+          {CONTACT_EMAIL}
+        </a>{" "}
+        și vom șterge informațiile cât mai repede posibil.
+      </>
+    ),
+  },
+  {
+    index: "12",
     id: "contact",
     title: "Contact și ANSPDCP",
     body: (
@@ -329,14 +365,18 @@ const sections = [
     ),
   },
   {
-    index: "12",
+    index: "13",
     id: "modificari",
     title: "Modificări",
     body: (
       <>
         Vom actualiza această politică când lansăm funcționalități
-        noi sau când se schimbă infrastructura. Versiunea curentă:
-        aprilie 2026.
+        noi sau când se schimbă infrastructura. Pentru schimbări
+        substanțiale care afectează modul în care prelucrăm datele
+        tale - subprocesatori noi, baze legale modificate, fluxuri
+        noi care părăsesc dispozitivul - te anunțăm prin
+        re-prezentarea ecranului de acceptare la următoarea
+        deschidere a aplicației. Versiunea curentă: aprilie 2026.
       </>
     ),
   },
